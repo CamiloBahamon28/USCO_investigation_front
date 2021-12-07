@@ -4,17 +4,17 @@ import logoUscoBlack from '../img/logo-usco-rojo.png'
 
 export const NavbarDefault = () => {
 	return (
-		<header id="header" className="header fixed-top">
-			<div className="container-fluid container-xl d-flex align-items-center justify-content-between">
+		<header className="transition duration-500 z-50 py-5 px-0 fixed flex w-full">
+			<div className="flex w-full p-2 mx-5  items-center justify-between">
 
-				<Link className="logo d-flex align-items-center" to="/">
-					<img src={logoUscoBlack} alt="Logo Usco" />
+				<Link className="leading-none flex items-center" to="/">
+					<img src={logoUscoBlack} alt="Logo Usco" className="max-h-20 mr-2" />
 				</Link>
 
 
-				<nav id="navbar" className="navbar">
-					<ul>
-						<li><NavLink className={({ isActive }) => 'nav-item nav-link ' + (isActive ? 'active' : '')} to="/">Home</NavLink></li>
+				<nav id="navbar" className="p-0 flex justify-end">
+					<ul className="m-0 p-0 flex list-none items-center">
+						<li><NavLink className={({ isActive }) => 'relative bg-none uppercase text-base font-semibold text-gray-900 py-3 px-0 -mb-1 rounded-none hover:underline' + (isActive ? 'active' : '')} to="/">Home</NavLink></li>
 						
 						{/* <li className="dropdown"><a href="#"><span>Drop Down</span> <i className="bi bi-chevron-down"></i></a>
 							<ul>
@@ -33,7 +33,7 @@ export const NavbarDefault = () => {
 								<li><a href="#">Drop Down 4</a></li>getstarted scrollto
 							</ul>
 						</li> */}
-						<li><NavLink className={({ isActive }) => 'getstarted scrollto ' + (isActive ? 'active' : '')} to="/login">Login</NavLink></li>
+						<li><NavLink className={({ isActive }) => 'bg-primary py-2 px-5 ml-8 rounded text-gray-50 no-underline transition duration-400 hover:bg-fourth  ' + (isActive ? 'active' : '')} to="/login">Login</NavLink></li>
 					</ul>
 					<i className="bi bi-list mobile-nav-toggle"></i>
 				</nav>
