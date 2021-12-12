@@ -5,14 +5,13 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
+	{ name: 'Home', to: '/', current: true },
+	{ name: 'Nosotros', to: '/register', current: false },
+
 ]
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+	return classes.filter(Boolean).join(' ')
 }
 export const NavbarTest = () => {
 	return (
@@ -34,15 +33,15 @@ export const NavbarTest = () => {
 									</Disclosure.Button>
 								</div>
 								<div className="flex-1 flex items-center justify-center sm:items-center sm:justify-start">
-									<div className="flex-shrink-0 flex items-center">
+									<Link className="flex-shrink-0 flex items-center" to="/">
 										<img className="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-400.svg" alt="Workflow" />
-									</div>
+									</Link>
 									<div className="hidden sm:block sm:ml-6">
 										<div className="flex space-x-4">
 											{navigation.map((item) => (
-												<a
+												<NavLink
 													key={item.name}
-													href={item.href}
+													to={item.to}
 													className={classNames(
 														item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
 														'px-3 py-2 rounded-md text-sm font-medium'
@@ -50,19 +49,25 @@ export const NavbarTest = () => {
 													aria-current={item.current ? 'page' : undefined}
 												>
 													{item.name}
-												</a>
+												</NavLink>
 											))}
+											{/* <li><NavLink 
+												className={({ isActive }) => 'bg-primary py-2 px-5 ml-8 rounded text-gray-50 no-underline transition duration-400 hover:bg-fourth  ' + (isActive ? 'active' : '')} 
+												to="/login">Login</NavLink></li> */}
+
 										</div>
 									</div>
 								</div>
 								<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-									<button
+									{/* 
+									Item for notification
+										<button
 										type="button"
 										className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
 									>
 										<span className="sr-only">View notifications</span>
 										<BellIcon className="h-6 w-6" aria-hidden="true" />
-									</button>
+									</button> */}
 
 									{/* Profile dropdown */}
 									<Menu as="div" className="ml-3 relative">
@@ -88,32 +93,32 @@ export const NavbarTest = () => {
 											<Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
 												<Menu.Item>
 													{({ active }) => (
-														<a
-															href="#"
+														<NavLink
+															to="/profile"
 															className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
 														>
-															Your Profile
-														</a>
+															Perfil
+														</NavLink>
 													)}
 												</Menu.Item>
 												<Menu.Item>
 													{({ active }) => (
-														<a
-															href="#"
+														<NavLink
+															to="/"
 															className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
 														>
-															Settings
-														</a>
+															Configuracion
+														</NavLink>
 													)}
 												</Menu.Item>
 												<Menu.Item>
 													{({ active }) => (
-														<a
-															href="#"
+														<NavLink
+															to="/"
 															className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
 														>
-															Sign out
-														</a>
+															Cerrar Sesion
+														</NavLink>
 													)}
 												</Menu.Item>
 											</Menu.Items>
@@ -136,7 +141,17 @@ export const NavbarTest = () => {
 										)}
 										aria-current={item.current ? 'page' : undefined}
 									>
-										{item.name}
+										<NavLink
+											key={item.name}
+											to={item.to}
+											className={classNames(
+												item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+												'px-3 py-2 rounded-md text-sm font-medium'
+											)}
+											aria-current={item.current ? 'page' : undefined}
+										>
+											{item.name}
+										</NavLink>
 									</Disclosure.Button>
 								))}
 							</div>
