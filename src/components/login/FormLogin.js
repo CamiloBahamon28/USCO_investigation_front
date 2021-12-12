@@ -47,30 +47,30 @@ export const FormLogin = () => {
 	}
 
 	return (
-		<section id="pricing" className="pricing">
+		<section id="pricing" className="container mx-auto mt-32">
 
-			<div className="container" data-aos="fade-up">
+			<div className="flex-col justify-center items-center">
 
-				<header className="section-header">
-					<h2>Bienvenido</h2>
-					<p>Login</p>
+				<header className="flex-col text-center pb-10  justify-center">
+					<h2 className="text-sm tracking-wider font-bold m-0 text-primary uppercase">Bienvenido</h2>
+					<p className="mt-4  text-4xl leading-10 font-bold text-secondary">Login</p>
 				</header>
 
-				<div className="row justify-content-center" data-aos="fade-left">
-					<div className="col-lg-8 col-md-8 " data-aos="zoom-in" data-aos-delay="100">
-						<div className="box row rounded-10">
-							<div className="col-lg-6 col-md-12">
-								<form onSubmit={handleSubmit}>
-									<img src={logoUsco} className="img-fluid" alt="" />
+				<div className="flex justify-center items-center" >
+					<div className="flex justify-start items-start" >
+						<div className="py-10 px-5 bg-gray-50 text-center shadow-4xl rounded-3xl transition duration-300 grid grid-cols-2 gap-0 items-center  ">
+							<div className="flex">
+								<form onSubmit={handleSubmit} >
+									<img src={logoUsco} className="max-w-full h-auto" alt="Logo Usco" />
 									<link rel="shortcut icon" href="https://www.usco.edu.co/imagen-institucional/favicon.ico" type="image/x-icon" />
-									<div class="row gy-4 p-3">
-										<div class="input-group mb-3">
-											<span class="input-group-text" id="username"><i class="bi bi-person-fill "></i></span>
-											<input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" ref={emailRef} />
+									<div className="">
+										<div className="input-group mb-3">
+											<span className="input-group-text" id="username"><i className="bi bi-person-fill "></i></span>
+											<input type="text" className="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" ref={emailRef} />
 										</div>
-										<div class="input-group mb-3">
-											<span class="input-group-text" id="username"><i class="bi bi-lock-fill"></i></span>
-											<input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" ref={passwordRef} />
+										<div className="input-group mb-3">
+											<span className="input-group-text" id="username"><i className="bi bi-lock-fill"></i></span>
+											<input type="password" className="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" ref={passwordRef} />
 										</div>
 										<div className="col-12">
 											<button className="btn-buy text-decoration-none">Login</button>
@@ -81,10 +81,10 @@ export const FormLogin = () => {
 									</div>
 								</form>
 							</div>
-							<div className="col-lg-6 d-sm-none d-lg-flex align-items-center">
+							<div className="col-lg-6 d-sm-none d-lg-flex align-items-center ">
 								<img src={loginImg} className="img-fluid" alt="login img" />
 							</div>
-							<div className-="row">
+							<div className="col-span-full mt-7">
 								<p>Aun no tienes una cuenta? <NavLink className={({ isActive }) => 'register-link' + (isActive ? 'active' : '')} to="/register">Registrate</NavLink></p>
 							</div>
 						</div>

@@ -9,10 +9,15 @@ import { Register } from '../components/register/Register';
 import { NavbarDefault } from '../components/ui/NavbarDefault';
 import { DashboardRoutes } from './DashboardRoutes';
 
+import imgBackground from '../components/img/hero-bg.png'
+import { NavbarTest } from '../components/ui/NavbarTest';
+
 export const AppRouter = () => {
 	return (
+		<div style={{ backgroundImage: `url(${imgBackground})` }}>
+
 		<BrowserRouter>
-				<NavbarDefault />
+				<NavbarTest />
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login />} />
@@ -23,5 +28,6 @@ export const AppRouter = () => {
 			</Routes>
 
 		</BrowserRouter>
+		</div>
 	)
 }

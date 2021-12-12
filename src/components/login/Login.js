@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { NavbarDefault } from '../ui/NavbarDefault';
 import { FormLogin } from './FormLogin';
+import { TestLogin } from './TestLogin';
 
 export const Login = () => {
 
@@ -24,7 +25,8 @@ export const Login = () => {
 		// 	</button>
 		// </div>
 		<div className="container p-5">
-			<FormLogin />
+			{/* <FormLogin /> */}
+			<TestLogin />
 		</div>
 
 	)
