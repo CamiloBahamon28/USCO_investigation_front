@@ -14,7 +14,7 @@ import { NavbarTest } from '../components/ui/NavbarTest';
 export const DashboardRoutes = () => {
 	return (
 		<>
-			<NavbarTest />	
+			{/* <NavbarTest />	 */}
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login />} />

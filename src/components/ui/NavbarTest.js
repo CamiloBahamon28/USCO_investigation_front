@@ -1,8 +1,10 @@
-import { Fragment } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Fragment, useContext } from 'react'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { AuthContext } from '../../auth/authContext'
+import { types } from '../../types/types'
 
 const navigation = [
 	{ name: 'Home', to: '/', current: true },
@@ -14,13 +16,38 @@ function classNames(...classes) {
 	return classes.filter(Boolean).join(' ')
 }
 export const NavbarTest = () => {
+
+
+	const myStorage = window.localStorage;
+	const navigate = useNavigate();
+	const { user ,dispatch } = useContext( AuthContext );
+
+	const handleLogout = () => {
+
+		const action = {
+			type: types.logout,
+		}
+
+		dispatch(action);
+
+		navigate('/login',{
+			replace:true
+		})
+
+		// const pepe =myStorage.setItem("user", user.logged)
+		// console.log(pepe)
+	}
+
+	console.log(user.logged)
+	
+
 	return (
 		<div>
-			<Disclosure as="nav" className="bg-gray-800">
+			<Disclosure as="nav" className="bg-primary">
 				{({ open }) => (
 					<>
 						<div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-							<div className="relative flex items-center justify-between h-20 sm:h-24">
+							<div className="relative flex items-center justify-between h-20 sm:h-20">
 								<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 									{/* Mobile menu button*/}
 									<Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -34,7 +61,7 @@ export const NavbarTest = () => {
 								</div>
 								<div className="flex-1 flex items-center justify-center sm:items-center sm:justify-start">
 									<Link className="flex-shrink-0 flex items-center" to="/">
-										<img className="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-400.svg" alt="Workflow" />
+										<img className="mx-auto h-12 w-auto" src="https://img.icons8.com/ios-filled/50/ffffff/ant.png" alt="Workflow" />
 									</Link>
 									<div className="hidden sm:block sm:ml-6">
 										<div className="flex space-x-4">
@@ -43,7 +70,7 @@ export const NavbarTest = () => {
 													key={item.name}
 													to={item.to}
 													className={classNames(
-														item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+														item.current ? 'bg-fourth text-white' : 'text-gray-300 hover:bg-fourth hover:text-white',
 														'px-3 py-2 rounded-md text-sm font-medium'
 													)}
 													aria-current={item.current ? 'page' : undefined}
@@ -70,8 +97,9 @@ export const NavbarTest = () => {
 									</button> */}
 
 									{/* Profile dropdown */}
-									<Menu as="div" className="ml-3 relative">
-										<div>
+									{user.logged ? <Menu as="div" className="ml-3 relative">
+										<div className='flex items-center'>
+										<p className='mr-2 text-white font-semibold text-xl'>{user.name}</p>
 											<Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
 												<span className="sr-only">Open user menu</span>
 												<img
@@ -116,6 +144,7 @@ export const NavbarTest = () => {
 														<NavLink
 															to="/"
 															className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+															onClick={handleLogout}
 														>
 															Cerrar Sesion
 														</NavLink>
@@ -123,7 +152,9 @@ export const NavbarTest = () => {
 												</Menu.Item>
 											</Menu.Items>
 										</Transition>
-									</Menu>
+									</Menu> : 
+									<NavLink className={({ isActive }) => 'bg-fourth py-2 px-5 ml-8 rounded text-gray-50 no-underline transition duration-400 hover:bg-fourth  ' + (isActive ? 'active' : '')} to="/login">Login</NavLink>
+									}
 								</div>
 							</div>
 						</div>
@@ -136,7 +167,7 @@ export const NavbarTest = () => {
 										as="a"
 										href={item.href}
 										className={classNames(
-											item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+											item.current ? 'bg-fourth text-white' : 'text-gray-300 hover:bg-fourth hover:text-white',
 											'block px-3 py-2 rounded-md text-base font-medium'
 										)}
 										aria-current={item.current ? 'page' : undefined}
@@ -145,7 +176,7 @@ export const NavbarTest = () => {
 											key={item.name}
 											to={item.to}
 											className={classNames(
-												item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+												item.current ? 'bg-fourth text-white' : 'text-gray-300 hover:bg-fourth hover:text-white',
 												'px-3 py-2 rounded-md text-sm font-medium'
 											)}
 											aria-current={item.current ? 'page' : undefined}
