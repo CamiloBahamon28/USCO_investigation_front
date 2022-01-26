@@ -6,10 +6,12 @@ import { Route, Routes } from 'react-router'
 
 import { Home } from '../components/home/Home'
 import { Login } from '../components/login/Login';
-import { Profile } from '../components/profile/Profile';
+import { Country } from '../components/profileAdmin/Controls/country/Country';
+import { Departamentos } from '../components/profileAdmin/Controls/departamentos/Departamentos';
+import { Municipality } from '../components/profileAdmin/Controls/municipality/Municipality';
+import { User } from '../components/profileAdmin/Controls/user/User';
+import {  ProfileRouter } from '../components/profileAdmin/ProfileRouter';
 import { Register } from '../components/register/Register';
-import { NavbarDefault } from '../components/ui/NavbarDefault';
-import { NavbarTest } from '../components/ui/NavbarTest';
 
 export const DashboardRoutes = () => {
 	return (
@@ -19,7 +21,11 @@ export const DashboardRoutes = () => {
 				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login />} />
 				<Route path="/register" element={<Register />} />
-				<Route path="/profile" element={<Profile />} />
+				<Route path="/profile" element={<ProfileRouter />} />
+				<Route path="/profile-users" element={<User />} />
+				<Route path="/profile-country" element={<Country />} />
+				<Route path="/profile-departamento" element={<Departamentos />} />
+				<Route path="/profile-municipality" element={<Municipality />} />
 			</Routes>
 		</>
 	)

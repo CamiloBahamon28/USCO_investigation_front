@@ -6,7 +6,6 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Home } from '../components/home/Home';
 import { Login } from '../components/login/Login';
 import { Register } from '../components/register/Register';
-import { NavbarDefault } from '../components/ui/NavbarDefault';
 import { DashboardRoutes } from './DashboardRoutes';
 
 import imgBackground from '../components/img/hero-bg.png'
@@ -16,18 +15,18 @@ export const AppRouter = () => {
 	return (
 		<div style={{ backgroundImage: `url(${imgBackground})` }}>
 
-		<BrowserRouter>
+			<BrowserRouter>
 				<NavbarTest />
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/login" element={<Login />} />
-				<Route path="/register" element={<Register />} />
-				
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/login" element={<Login />} />
+					<Route path="/register" element={<Register />} />
 
-				<Route path="/*" element={ <DashboardRoutes />}/>
-			</Routes>
 
-		</BrowserRouter>
+					<Route path="/*" element={<DashboardRoutes />} />
+				</Routes>
+
+			</BrowserRouter>
 		</div>
 	)
 }

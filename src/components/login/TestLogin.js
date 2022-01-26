@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from 'react'
 import axios from 'axios';
 
-import {  NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 import loginImg from '../img/world.svg'
 import { ModalLoginError } from './ModalLoginError';
@@ -10,10 +10,10 @@ import { AuthContext } from '../../auth/authContext';
 
 export const TestLogin = () => {
 
-	
+
 	// const myStorage = window.localStorage;
 	const navigate = useNavigate();
-	const { dispatch } = useContext( AuthContext );
+	const { dispatch } = useContext(AuthContext);
 
 	const emailRef = useRef();
 	const passwordRef = useRef();
@@ -22,20 +22,21 @@ export const TestLogin = () => {
 	// const [currentUser, setCurrentUser] = useState(myStorage.getItem("user"));
 
 
+	
 
-	const handleLogin =  (e) => {
+	const handleLogin = (e) => {
 
-		e.preventDefault(); 
+		e.preventDefault();
 
 		const action = {
 			type: types.login,
-			payload: { name : emailRef.current.value }
+			payload: { name: emailRef.current.value }
 		}
 
 		dispatch(action);
 
-		navigate('/profile',{
-			replace:true
+		navigate('/profile', {
+			replace: true
 		});
 
 
@@ -87,7 +88,7 @@ export const TestLogin = () => {
 							/>
 						</div>
 						{error && (
-							<ModalLoginError error={error}/>
+							<ModalLoginError error={error} />
 						)}
 						{/* {error && (
 							<span className="failure">Ohhh Lo sentimos, Algo salio mal Intentalo De nuevo</span>

@@ -13,7 +13,7 @@ export const WelcomeHome = () => {
 			<div className="container flex justify-center ">
 				<div className="flex ">
 					<div className="flex flex-col justify-center gap-6 sm:z-10 sm:flex sm:justify-center sm:items-center sm:content-center ">
-						<h1 className="m-0 text-6xl font-bold text-primary">Bienvenidos</h1>
+						<h1 className="m-0 text-6xl font-bold text-primary">Bienvenidos Al JOM</h1>
 						<h2 className="mr-4 text-2xl">Esta plataforma esta diseñada para investigadores</h2>
 						<div className="flex-col">
 							<div className="flex items-center">

@@ -6,6 +6,9 @@ import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { AuthContext } from '../../auth/authContext'
 import { types } from '../../types/types'
 
+
+import logoUscoBlack from '../img/logo-usco-rojo.png'
+
 const navigation = [
 	{ name: 'Home', to: '/', current: true },
 	{ name: 'Nosotros', to: '/register', current: false },
@@ -20,7 +23,7 @@ export const NavbarTest = () => {
 
 	const myStorage = window.localStorage;
 	const navigate = useNavigate();
-	const { user ,dispatch } = useContext( AuthContext );
+	const { user, dispatch } = useContext(AuthContext);
 
 	const handleLogout = () => {
 
@@ -30,8 +33,8 @@ export const NavbarTest = () => {
 
 		dispatch(action);
 
-		navigate('/login',{
-			replace:true
+		navigate('/login', {
+			replace: true
 		})
 
 		// const pepe =myStorage.setItem("user", user.logged)
@@ -39,14 +42,14 @@ export const NavbarTest = () => {
 	}
 
 	console.log(user.logged)
-	
+
 
 	return (
 		<div>
-			<Disclosure as="nav" className="bg-primary">
+			<Disclosure as="nav" className="bg-transparent">
 				{({ open }) => (
 					<>
-						<div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+						<div className=" w-full p-3 sm:px-6 lg:px-8">
 							<div className="relative flex items-center justify-between h-20 sm:h-20">
 								<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 									{/* Mobile menu button*/}
@@ -61,7 +64,7 @@ export const NavbarTest = () => {
 								</div>
 								<div className="flex-1 flex items-center justify-center sm:items-center sm:justify-start">
 									<Link className="flex-shrink-0 flex items-center" to="/">
-										<img className="mx-auto h-12 w-auto" src="https://img.icons8.com/ios-filled/50/ffffff/ant.png" alt="Workflow" />
+										<img className="mx-auto h-16 w-auto" src="https://img.icons8.com/dotty/80/000000/wolf.png" alt="Workflow" />
 									</Link>
 									<div className="hidden sm:block sm:ml-6">
 										<div className="flex space-x-4">
@@ -70,24 +73,20 @@ export const NavbarTest = () => {
 													key={item.name}
 													to={item.to}
 													className={classNames(
-														item.current ? 'bg-fourth text-white' : 'text-gray-300 hover:bg-fourth hover:text-white',
-														'px-3 py-2 rounded-md text-sm font-medium'
+														'text-black hover:bg-fourth hover:text-white',
+														'px-3 py-2 rounded-md text-base font-medium'
 													)}
 													aria-current={item.current ? 'page' : undefined}
 												>
 													{item.name}
 												</NavLink>
 											))}
-											{/* <li><NavLink 
-												className={({ isActive }) => 'bg-primary py-2 px-5 ml-8 rounded text-gray-50 no-underline transition duration-400 hover:bg-fourth  ' + (isActive ? 'active' : '')} 
-												to="/login">Login</NavLink></li> */}
-
 										</div>
 									</div>
 								</div>
 								<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-									{/* 
-									Item for notification
+
+									{/* Item for notification
 										<button
 										type="button"
 										className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
@@ -99,11 +98,11 @@ export const NavbarTest = () => {
 									{/* Profile dropdown */}
 									{user.logged ? <Menu as="div" className="ml-3 relative">
 										<div className='flex items-center'>
-										<p className='mr-2 text-white font-semibold text-xl'>{user.name}</p>
+											<p className='mr-2 text-black font-semibold text-xl'>{user.name}</p>
 											<Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
 												<span className="sr-only">Open user menu</span>
 												<img
-													className="h-8 w-8 rounded-full"
+													className="h-8 w-8 rounded-full "
 													src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
 													alt=""
 												/>
@@ -152,39 +151,39 @@ export const NavbarTest = () => {
 												</Menu.Item>
 											</Menu.Items>
 										</Transition>
-									</Menu> : 
-									<NavLink className={({ isActive }) => 'bg-fourth py-2 px-5 ml-8 rounded text-gray-50 no-underline transition duration-400 hover:bg-fourth  ' + (isActive ? 'active' : '')} to="/login">Login</NavLink>
+									</Menu>
+
+										:
+
+										<div className='hidden sm:block'>
+											<NavLink className={({ isActive }) => ' bg-fourth py-2 px-5 ml-8 rounded text-gray-50 no-underline transition duration-400 hover:bg-fourth  ' + (isActive ? 'active' : '')} to="/login">Login</NavLink>
+											<NavLink className={({ isActive }) => ' bg-fourth py-2 px-5 ml-8 rounded text-gray-50 no-underline transition duration-400 hover:bg-fourth  ' + (isActive ? 'active' : '')} to="/register">Registrarte</NavLink>
+										</div>
 									}
 								</div>
 							</div>
 						</div>
 
-						<Disclosure.Panel className="sm:hidden">
-							<div className="px-2 pt-2 pb-3 space-y-1">
+						<Disclosure.Panel className="sm:hidden ">
+							<div className="px-2  pb-3 space-y-1 flex flex-col ">
 								{navigation.map((item) => (
 									<Disclosure.Button
 										key={item.name}
-										as="a"
-										href={item.href}
-										className={classNames(
-											item.current ? 'bg-fourth text-white' : 'text-gray-300 hover:bg-fourth hover:text-white',
-											'block px-3 py-2 rounded-md text-base font-medium'
-										)}
-										aria-current={item.current ? 'page' : undefined}
+										className={({ isActive }) => 'pt-3'+ (isActive ? 'active' : '')}
 									>
 										<NavLink
 											key={item.name}
 											to={item.to}
-											className={classNames(
-												item.current ? 'bg-fourth text-white' : 'text-gray-300 hover:bg-fourth hover:text-white',
-												'px-3 py-2 rounded-md text-sm font-medium'
-											)}
-											aria-current={item.current ? 'page' : undefined}
+											className={({ isActive }) => 'px-3 py-2 rounded-md text-sm font-medium'+ (isActive ? 'active' : '')}
 										>
 											{item.name}
 										</NavLink>
+
+
 									</Disclosure.Button>
 								))}
+								<NavLink className={({ isActive }) => 'flex justify-center px-3 py-2 rounded-md text-sm font-medium ' + (isActive ? 'active' : '')} to="/login">Login</NavLink>
+								<NavLink className={({ isActive }) => 'flex justify-center px-3 py-2 rounded-md text-sm font-medium' + (isActive ? 'active' : '')} to="/register">Registrarte</NavLink>
 							</div>
 						</Disclosure.Panel>
 					</>

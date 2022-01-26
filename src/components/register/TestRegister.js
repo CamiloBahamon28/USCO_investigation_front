@@ -1,4 +1,5 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
+import axios from 'axios';
 
 export const TestRegister = () => {
 
@@ -9,12 +10,47 @@ export const TestRegister = () => {
 	const emailInstitucionalRef = useRef();
 	const countryRef = useRef();
 
+	const [countrys, setCountrys] = useState([]);
+	const [typeDocument, setTypeDocument] = useState([]);
+
+	useEffect(() => {
+
+		const countrysData = async () => {
+			try {
+				const allCountrys = await axios.get("/api/countries")
+				setCountrys(allCountrys.data)
+				
+
+			} catch (err) {
+				console.log(err);
+			}
+
+		}
+		const typeDocumentData = async () => {
+			try {
+				const allTypeDocument = await axios.get("/api/tiposDocumentos")
+				setTypeDocument(allTypeDocument.data)
+				
+
+			} catch (err) {
+				console.log(err);
+			}
+
+		}
+
+		
+
+		typeDocumentData();
+		countrysData();
+		
+	}, []);
+
 
 	const handleSubmit = (e) => {
 
 		e.preventDefault();
 
-		
+
 		const user = {
 			names: namesRef.current.value,
 			lastName: lastNameRef.current.value,
@@ -26,9 +62,9 @@ export const TestRegister = () => {
 
 		console.log(user)
 
-		window.location = '/profile'
+		// window.location = '/profile'
 
-		
+
 
 	}
 
@@ -91,8 +127,9 @@ export const TestRegister = () => {
 													className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 													ref={tipeDocumentRef}
 												>
-													<option value="cedula" >Cedula</option>
-													<option value="pasaporte" >Pasaporte</option>
+													{typeDocument.map((typeDocument) => (
+														<option key={typeDocument.id} value={typeDocument.name}>{typeDocument.name}</option>
+													))}
 												</select>
 											</div>
 
@@ -129,10 +166,11 @@ export const TestRegister = () => {
 													className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 													ref={countryRef}
 												>
-													<option value="Colombia">Colombia</option>
-													<option value="United States">United States</option>
-													<option value="Venezuela">Venezuela</option>
-													<option value="Mexico">Mexico</option>
+
+													{countrys.map((country) => (
+														<option key={country.id} value={country.id}>{country.name}</option>
+													))}
+													
 												</select>
 											</div>
 
