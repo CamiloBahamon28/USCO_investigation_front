@@ -11,7 +11,7 @@ import { AuthContext } from '../../auth/authContext';
 export const TestLogin = () => {
 
 
-	// const myStorage = window.localStorage;
+	const myStorage = window.localStorage;
 	const navigate = useNavigate();
 	const { dispatch } = useContext(AuthContext);
 
@@ -22,40 +22,43 @@ export const TestLogin = () => {
 	// const [currentUser, setCurrentUser] = useState(myStorage.getItem("user"));
 
 
-	
 
-	const handleLogin = (e) => {
+
+	const handleLogin = async (e) => {
 
 		e.preventDefault();
 
-		const action = {
-			type: types.login,
-			payload: { name: emailRef.current.value }
+		const user = {
+			username: emailRef.current.value,
+			password: passwordRef.current.value
+		};
+
+		
+		try {
+			const res = await axios.post("/api/auth/signin", user)
+			const role = res.data.role
+
+			// if(res.data.message != "Invalid password"){
+				const action = {
+					type: types.login,
+					payload: { username: emailRef.current.value}
+				}
+		
+				dispatch(action);
+				myStorage.setItem("Authorization", res.data.token)
+				myStorage.setItem("Rol", role.name)
+				navigate('/profile', {
+					replace: true
+				});
+
+			// }else{
+			// 	setError(true)
+			// 	console.log(res.status )
+			// }
+		} catch (err) {
+			setError(true)
+			
 		}
-
-		dispatch(action);
-
-		navigate('/profile', {
-			replace: true
-		});
-
-
-		// const user = {
-		// 	email: emailRef.current.value,
-		// 	password: passwordRef.current.value
-		// };
-
-		// console.log(user);
-		// try {
-		// 	const res = await axios.post("/api/auth/signin", user)
-		// 	myStorage.setItem("Authorization", res.data.token)
-		// 	setCurrentUser(res.data.token)
-		// 	setError(false)
-		// 	window.location = '/profile'
-		// } catch (err) {
-		// 	setError(true)
-		// 	console.log(err)
-		// }
 	}
 
 
@@ -87,12 +90,12 @@ export const TestLogin = () => {
 								ref={passwordRef}
 							/>
 						</div>
-						{error && (
-							<ModalLoginError error={error} />
-						)}
 						{/* {error && (
-							<span className="failure">Ohhh Lo sentimos, Algo salio mal Intentalo De nuevo</span>
+							<ModalLoginError error={error} />
 						)} */}
+						{error && (
+							<span className="failure">Ohhh Lo sentimos, Algo salio mal Intentalo De nuevo</span>
+						)}
 					</div>
 
 
@@ -113,3 +116,5 @@ export const TestLogin = () => {
 		</div>
 	)
 }
+
+

@@ -1,10 +1,15 @@
 import React,{ useEffect, useState } from 'react'
 import { ProfileNavbar } from '../../ProfileNavbar'
 import axios from 'axios';
+import { Load } from '../../../ui/Load';
 
 
 // tengo que mandar el documento para hacer la consulta en el modal y ahi si en el modal pongo el arreglo con los datos de la persona
 export const UsersCrud = ({users , loading}) => {
+
+	if (loading) {
+		return (<Load />);
+	}
 
 	
 	return (
@@ -27,6 +32,12 @@ export const UsersCrud = ({users , loading}) => {
 											scope="col"
 											className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
 										>
+											Apellidos
+										</th>
+										<th
+											scope="col"
+											className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+										>
 											Num. Documento
 										</th>
 										<th
@@ -39,7 +50,7 @@ export const UsersCrud = ({users , loading}) => {
 											scope="col"
 											className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
 										>
-											Status
+											Email
 										</th>
 										<th
 											scope="col"
@@ -56,34 +67,31 @@ export const UsersCrud = ({users , loading}) => {
 									</tr>
 								</thead>
 								<tbody className="bg-white divide-y divide-gray-200">
-									{users.map((person) => (
-										<tr key={person.numDocumento}>
+									{users.map((person,i) => (
+										<tr key={person.key === null ? i: person.documentNumber}>
 											<td className="px-6 py-4 whitespace-nowrap">
 												<div className="flex items-center">
-													<div className="flex-shrink-0 h-10 w-10">
+													{/* <div className="flex-shrink-0 h-10 w-10">
 														<img className="h-10 w-10 rounded-full" src={person.photo} alt="" />
-													</div>
+													</div> */}
 													<div className="ml-4">
-														<div className="text-sm font-medium text-gray-900">{person.nombres} {person.apellidos}</div>
-														<div className="text-sm text-gray-500">{person.correoI}</div>
+														<div className="text-sm font-medium text-gray-900">{person.firstname === null ? 'Nombre No Ingresado'  : person.firstname }</div>
+														<div className="text-sm text-gray-500">{person.firstname === null ? 'hoal'  : person.firstname }</div>
 													</div>
 												</div>
 											</td>
 											<td className="px-6 py-4 whitespace-nowrap">
 												<span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-													{person.numDocumento}
+													{person.username}
 												</span>
 											</td>
 											<td className="px-6 py-4 whitespace-nowrap">
-												<div className="text-sm text-gray-900">{person.pais}</div>
-												<div className="text-sm text-gray-500">{person.department}</div>
+												<div className="text-sm text-gray-900">{person.username}</div>
 											</td>
 											<td className="px-6 py-4 whitespace-nowrap">
-												<span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-													Active
-												</span>
+												<div className="text-sm text-gray-900">{person.username}</div>
 											</td>
-											<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.rol}</td>
+											<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.username}</td>
 											<td className="">
 												{/* <ModalEditProfile user={user} />  */}
 											</td>

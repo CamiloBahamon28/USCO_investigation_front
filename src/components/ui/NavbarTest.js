@@ -18,6 +18,7 @@ const navigation = [
 function classNames(...classes) {
 	return classes.filter(Boolean).join(' ')
 }
+
 export const NavbarTest = () => {
 
 
@@ -36,12 +37,12 @@ export const NavbarTest = () => {
 		navigate('/login', {
 			replace: true
 		})
+		myStorage.removeItem("Authorization");
 
-		// const pepe =myStorage.setItem("user", user.logged)
-		// console.log(pepe)
+		
 	}
 
-	console.log(user.logged)
+	console.log(user)
 
 
 	return (
