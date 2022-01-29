@@ -35,7 +35,7 @@ export const TestLogin = () => {
 
 		
 		try {
-			const res = await axios.post("/api/auth/signin", user)
+			const res = await axios.post("/api/auth/login", user)
 			const role = res.data.role
 
 			// if(res.data.message != "Invalid password"){
