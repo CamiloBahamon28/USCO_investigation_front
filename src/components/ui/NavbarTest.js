@@ -2,12 +2,9 @@ import { Fragment, useContext } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import {  MenuIcon, XIcon } from '@heroicons/react/outline'
 import { AuthContext } from '../../auth/authContext'
 import { types } from '../../types/types'
-
-
-import logoUscoBlack from '../img/logo-usco-rojo.png'
 
 const navigation = [
 	{ name: 'Home', to: '/', current: true },
@@ -38,8 +35,6 @@ export const NavbarTest = () => {
 			replace: true
 		})
 		myStorage.removeItem("Authorization");
-
-		
 	}
 
 	console.log(user)
