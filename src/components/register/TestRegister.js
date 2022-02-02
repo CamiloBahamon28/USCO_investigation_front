@@ -1,7 +1,12 @@
 import React, { useRef, useEffect, useState } from 'react'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import {fetchCountries, fetchTypesDocuments} from "../../service/service";
 
 export const TestRegister = () => {
+
+
+	const navigate = useNavigate();
 
 	const namesRef = useRef();
 	const lastNameRef = useRef();
@@ -9,63 +14,52 @@ export const TestRegister = () => {
 	const numCedulaRef = useRef();
 	const emailInstitucionalRef = useRef();
 	const countryRef = useRef();
+	const passwordRef = useRef();
 
-	const [countrys, setCountrys] = useState([]);
+	const [error, setError] = useState(false)
+	const [countries, setCountries] = useState([]);
 	const [typeDocument, setTypeDocument] = useState([]);
 
+	let allCountries = []
+	let allTypeDocuments = []
+
+	const data = async () =>{
+		try {
+			allCountries = await fetchCountries();
+			setCountries(allCountries.data)
+
+			allTypeDocuments = await  fetchTypesDocuments();
+			setTypeDocument(allTypeDocuments.data)
+		}catch (e) {
+			console.log(e)
+		}
+	}
+
 	useEffect(() => {
-
-		const countrysData = async () => {
-			try {
-				const allCountrys = await axios.get("/api/countries")
-				setCountrys(allCountrys.data)
-				
-
-			} catch (err) {
-				console.log(err);
-			}
-
-		}
-		const typeDocumentData = async () => {
-			try {
-				const allTypeDocument = await axios.get("/api/tiposDocumentos")
-				setTypeDocument(allTypeDocument.data)
-				
-
-			} catch (err) {
-				console.log(err);
-			}
-
-		}
-
-		
-
-		typeDocumentData();
-		countrysData();
-		
+		data();
 	}, []);
 
 
-	const handleSubmit = (e) => {
-
+	const handleSubmit = async(e) => {
 		e.preventDefault();
-
-
 		const user = {
-			names: namesRef.current.value,
-			lastName: lastNameRef.current.value,
-			tipeDocument: tipeDocumentRef.current.value,
-			numCedula: numCedulaRef.current.value,
-			emailInstitucional: emailInstitucionalRef.current.value,
-			country: countryRef.current.value,
+			firstname: namesRef.current.value,
+			lastname: lastNameRef.current.value,
+			documentType_id:  tipeDocumentRef.current.value,
+			documentNumber: numCedulaRef.current.value,
+			institutionalEmail: emailInstitucionalRef.current.value,
+			country_id: countryRef.current.value,
+			password: passwordRef.current.value
 		};
 
-		console.log(user)
-
-		// window.location = '/profile'
-
-
-
+		 try {
+		 	 await axios.post("/api/auth/register", user)
+				navigate('/login', {
+		 			replace: true
+		 		});
+		 } catch (err) {
+		 	setError(true)
+		 }
 	}
 
 	return (
@@ -128,7 +122,7 @@ export const TestRegister = () => {
 													ref={tipeDocumentRef}
 												>
 													{typeDocument.map((typeDocument) => (
-														<option key={typeDocument.id} value={typeDocument.name}>{typeDocument.name}</option>
+														<option key={typeDocument.id} value={typeDocument.id}>{typeDocument.name}</option>
 													))}
 												</select>
 											</div>
@@ -137,11 +131,15 @@ export const TestRegister = () => {
 												<label htmlFor="first-name" className="block text-lg font-bold text-gray-700">
 													Numero de Documento
 												</label>
-												<input type="number" required
+												<input type="number" required min="1"
 													className="appearance-none  border-t-0 border-r-0 border-l-0 border-b-2 relative block w-full  py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-primary focus:z-10 sm:text-sm"
 													placeholder="Numero de Documento"
 													ref={numCedulaRef}
 												/>
+												{/* <input className="appearance-none  border-t-0 border-r-0 border-l-0 border-b-2 relative block w-full  py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-primary focus:z-10 sm:text-sm"
+													
+												type="text" name="tel" value="" maxlength="9" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" ref={numCedulaRef}/>  
+											 */}
 											</div>
 
 											<div className="col-span-6 sm:col-span-3">
@@ -167,11 +165,22 @@ export const TestRegister = () => {
 													ref={countryRef}
 												>
 
-													{countrys.map((country) => (
+													{countries.map((country) => (
 														<option key={country.id} value={country.id}>{country.name}</option>
 													))}
 													
 												</select>
+											</div>
+
+											<div className="col-span-6 sm:col-span-6 justify-center items-center">
+												<label htmlFor="first-name" className="block text-lg font-bold text-gray-700">
+													Contraseña
+												</label>
+												<input type="password" required
+													className="appearance-none  border-t-0 border-r-0 border-l-0 border-b-2 relative block w-full  py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-primary focus:z-10 sm:text-sm"
+													placeholder="Ingresa tu Contraseña"
+													ref={passwordRef}
+												/>
 											</div>
 
 
