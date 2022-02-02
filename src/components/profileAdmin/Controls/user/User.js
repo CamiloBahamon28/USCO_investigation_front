@@ -3,6 +3,7 @@ import axios from 'axios';
 import Pagination from '../../../ui/Pagination';
 import { ProfileNavbar } from '../../ProfileNavbar';
 import { UsersCrud } from './UsersCrud';
+import {log} from "@craco/craco/lib/logger";
 
 export const User = () => {
 
@@ -18,7 +19,6 @@ export const User = () => {
 
 		const fetchUsers = async () => {
 			setLoading(true);
-
 			const token = myStorage.getItem("Authorization")
 			const config = {
 				headers: {
@@ -28,47 +28,23 @@ export const User = () => {
 
 			try {
 				const allUsers = await axios.get("/api/users", config)
-				console.log(allUsers.data);
-				// setUser([{name:'asd'},{name:'asd'}])
-				setUser(allUsers.data)
-				console.log(user);
-				console.log(user);
-				
+				// const allData= allUsers.data;
+				// const data = allData.map((person) => (
+				//
+				// ))
+				// console.log(pepe.documentNumber)
+				setUser(allUsers.data);
+				console.log(allUsers.data)
 			} catch (err) {
 				console.log(err);
 			}
-			
 			setLoading(false);
 		};
 
 		fetchUsers();
 	}, []);
 
-	// useEffect(async () => {
-	// 	const token = myStorage.getItem("Authorization")
-	// 	const config = {
-	// 		headers:{
-	// 			Authorization: token,
-	// 		}
-	// 	  };
 
-	// 	const fetchUsers = async () => {
-	// 		setLoading(true);
-	// 		try {
-	// 			console.log(token);
-	// 			const allUser = await axios.get("/api/users", config)
-	// 			console.log(allUser.data);
-	// 			setUsers(allUser.data)
-	// 			console.log('state',users);
-	// 			// console.log(myStorage.getItem("Authorization"));
-	// 		} catch (err) {
-	// 			console.log(err);
-	// 		}
-	// 		setLoading(false);
-	// 	};
-
-	// 	fetchUsers();
-	// }, []);
 
 
 	// Get current posts
