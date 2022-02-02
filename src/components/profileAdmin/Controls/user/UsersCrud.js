@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { ProfileNavbar } from '../../ProfileNavbar'
-import axios from 'axios';
+import React from 'react'
+
 import { Load } from '../../../ui/Load';
-import { stringify } from 'postcss';
 import { NavLink } from 'react-router-dom';
 
-
-// tengo que mandar el documento para hacer la consulta en el modal y ahi si en el modal pongo el arreglo con los datos de la persona
 export const UsersCrud = ({ users, loading }) => {
 
 	if (loading) {
 		return (<Load />);
 	}
-
 
 
 	return (
@@ -65,7 +60,7 @@ export const UsersCrud = ({ users, loading }) => {
 									</tr>
 								</thead>
 								<tbody className="bg-white divide-y divide-gray-200">
-									{users.map((person, i) => (
+									{users.map((person) => (
 										<tr key={person.documentNumber}>
 											<td className="px-6 py-4 whitespace-nowrap">
 												<div className="flex items-center">
