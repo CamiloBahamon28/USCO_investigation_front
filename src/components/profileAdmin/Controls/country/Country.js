@@ -13,21 +13,20 @@ export const Country = () => {
 
 
 	const [countrys, setCountrys] = useState([]);
-	
-	useEffect(async () => {
 
-		const fetchCountrys = async () => {
-			setLoading(true);
-			try {
-				const allCountrys = await axios.get("/api/countries")
-				setCountrys(allCountrys.data)
-			} catch (err) {
-				console.log(err);
-			}
-			setLoading(false);
-		};
+	const fetchCountrys = async () => {
+		setLoading(true);
+		try {
+			const allCountrys = await axios.get("/api/countries")
+			setCountrys(allCountrys.data)
+		} catch (err) {
+			console.log(err);
+		}
+		setLoading(false);
+	};
 
-		fetchCountrys();
+	useEffect( () => {
+		 fetchCountrys();
 	}, []);
 
 	// Get current posts
