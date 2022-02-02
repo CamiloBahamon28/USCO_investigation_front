@@ -7,6 +7,7 @@ import loginImg from '../img/world.svg'
 import { types } from '../../types/types';
 import { AuthContext } from '../../auth/authContext';
 
+
 export const TestLogin = () => {
 
 
@@ -19,24 +20,26 @@ export const TestLogin = () => {
 
 	const [error, setError] = useState(false)
 
+
 	const handleLogin = async (e) => {
 
 		e.preventDefault();
 
 		const user = {
-			documentNumber: numDocumentRef.current.value,
-			password: passwordRef.current.value
+			documentNumber: numDocumentRef.current["value"],
+			password: passwordRef.current["value"]
 		};
 
 		
 		try {
 			const res = await axios.post("/api/auth/login", user)
+
 			const role = res.data.role.label
 
-			// if(res.data.message != "Invalid password"){
+
 				const action = {
 					type: types.login,
-					payload: { username: numDocumentRef.current.value}
+					payload: { username: numDocumentRef.current["value"]}
 				}
 		
 				dispatch(action);
