@@ -4,7 +4,6 @@ import axios from 'axios';
 import { NavLink, useNavigate } from 'react-router-dom'
 
 import loginImg from '../img/world.svg'
-import { ModalLoginError } from './ModalLoginError';
 import { types } from '../../types/types';
 import { AuthContext } from '../../auth/authContext';
 
@@ -15,46 +14,38 @@ export const TestLogin = () => {
 	const navigate = useNavigate();
 	const { dispatch } = useContext(AuthContext);
 
-	const emailRef = useRef();
+	const numDocumentRef = useRef();
 	const passwordRef = useRef();
 
 	const [error, setError] = useState(false)
-	// const [currentUser, setCurrentUser] = useState(myStorage.getItem("user"));
-
-
-
 
 	const handleLogin = async (e) => {
 
 		e.preventDefault();
 
 		const user = {
-			username: emailRef.current.value,
+			documentNumber: numDocumentRef.current.value,
 			password: passwordRef.current.value
 		};
 
 		
 		try {
 			const res = await axios.post("/api/auth/login", user)
-			const role = res.data.role
+			const role = res.data.role.label
 
 			// if(res.data.message != "Invalid password"){
 				const action = {
 					type: types.login,
-					payload: { username: emailRef.current.value}
+					payload: { username: numDocumentRef.current.value}
 				}
 		
 				dispatch(action);
 				myStorage.setItem("Authorization", res.data.token)
-				myStorage.setItem("Rol", role.name)
+				myStorage.setItem("Rol", role)
 				navigate('/profile', {
 					replace: true
 				});
 
-			// }else{
-			// 	setError(true)
-			// 	console.log(res.status )
-			// }
 		} catch (err) {
 			setError(true)
 			
@@ -66,35 +57,29 @@ export const TestLogin = () => {
 		<div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
 			<div className="max-w-md w-full space-y-8">
 				<div>
-					{/* <img className="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow" /> */}
 					<img src={loginImg} className="mx-auto h-48 w-auto" alt="login img" />
 					<h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
 						Login
 					</h2>
-					{/* <p className="mt-2 text-center text-sm text-gray-600">
-			  
-			</p> */}
 				</div>
 				<form onSubmit={handleLogin} className="mt-8 space-y-6" >
 
 					<div className="rounded-md shadow-sm -space-y-px">
 						<div>
 							<input type="text" required
-								className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-primary focus:z-10 sm:text-sm" placeholder="Email address"
-								ref={emailRef}
+								className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-primary focus:z-10 sm:text-sm" placeholder="Numero De Documento"
+								ref={numDocumentRef}
 							/>
 						</div>
 						<div>
 							<input type="password" required
-								className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-primary focus:z-10 sm:text-sm" placeholder="Password"
+								className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-primary focus:z-10 sm:text-sm" placeholder="Clave"
 								ref={passwordRef}
 							/>
 						</div>
-						{/* {error && (
-							<ModalLoginError error={error} />
-						)} */}
+						
 						{error && (
-							<span className="failure">Ohhh Lo sentimos, Algo salio mal Intentalo De nuevo</span>
+							<span className="text-red-500">Ohhh Lo sentimos, Algo salio mal Intentalo De nuevo</span>
 						)}
 					</div>
 
