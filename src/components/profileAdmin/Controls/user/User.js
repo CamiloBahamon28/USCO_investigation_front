@@ -3,7 +3,7 @@ import axios from 'axios';
 import Pagination from '../../../ui/Pagination';
 import { ProfileNavbar } from '../../ProfileNavbar';
 import { UsersCrud } from './UsersCrud';
-import {log} from "@craco/craco/lib/logger";
+
 
 export const User = () => {
 
@@ -28,13 +28,8 @@ export const User = () => {
 
 			try {
 				const allUsers = await axios.get("/api/users", config)
-				// const allData= allUsers.data;
-				// const data = allData.map((person) => (
-				//
-				// ))
-				// console.log(pepe.documentNumber)
-				setUser(allUsers.data);
 				console.log(allUsers.data)
+				setUser(allUsers.data);
 			} catch (err) {
 				console.log(err);
 			}
@@ -50,7 +45,6 @@ export const User = () => {
 	// Get current posts
 	const indexOfLastPost = currentPage * postsPerPage;
 	const indexOfFirstPost = indexOfLastPost - postsPerPage;
-	// const currentUsers = users.slice(indexOfFirstPost, indexOfLastPost);
 
 	// Change page
 	const paginate = pageNumber => setCurrentPage(pageNumber);
@@ -59,10 +53,10 @@ export const User = () => {
 	return (<div className='container'>
 		<ProfileNavbar />
 		<UsersCrud users={user} loading={loading}/>
-		{/* <Pagination
+		 <Pagination
 			postsPerPage={postsPerPage}
-			totalPosts={users.length}
+			totalPosts={user.length}
 			paginate={paginate}
-		/> */}
+		/>
 	</div>);
 };

@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const myStorage = window.localStorage
 const token = myStorage.getItem("Authorization")
+console.log('token',token)
 
 export const fetchGender = async () => {
     try {
@@ -63,6 +64,34 @@ export const fetchOneUser = async (userId) =>{
         console.log(e)
     }
 }
+
+export const fetchUpdateDataUser = async  (userIdToGet,userData)=> {
+    try {
+        const updateData = await axios.put(`/api/users/${userIdToGet}`,userData, {
+            headers:{
+                Authorization: token
+            }
+        })
+        return updateData;
+    }catch (e) {
+        console.log(e)
+    }
+
+}
+
+export const fetchDeletUser = async (userIdToGet) =>{
+    try {
+        const deleteUser = await axios.delete(`/api/users/${userIdToGet}`, {
+            headers:{
+                Authorization: token
+            }
+        })
+        return deleteUser;
+    }catch (e) {
+        console.log(e)
+    }
+}
+
 
 
 

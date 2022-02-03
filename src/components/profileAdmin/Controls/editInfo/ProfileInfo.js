@@ -1,19 +1,21 @@
 import React, {useEffect, useRef, useState} from 'react';
 
-import {useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import {Load} from "../../../ui/Load";
 import {
     fetchCivilStatus,
     fetchCountries,
     fetchEthnicGroup,
     fetchGender,
-    fetchOneUser, fetchTypesDocuments
+    fetchOneUser, fetchTypesDocuments, fetchUpdateDataUser
 } from "../../../../service/service";
 
 
 export const ProfileInfo = () => {
 
-
+    const myStorage = window.localStorage
+    const roleUser = myStorage.getItem("Rol")
+    {/*{roleUser == 'Administrador'}*/}
     const nameRef = useRef();
     const lastNameRef = useRef();
     const emailRef = useRef();
@@ -25,6 +27,8 @@ export const ProfileInfo = () => {
     const genderRef = useRef();
     const ethnicRef = useRef();
     const civilStatusRef = useRef();
+
+    const navigate = useNavigate();
 
 
     const {userId} = useParams();
@@ -56,6 +60,7 @@ export const ProfileInfo = () => {
     let allGender = []
     let allEthnic = []
     let allCivilStatus = []
+    let updateUser = []
 
     const data = async () => {
         setLoading(true)
@@ -87,7 +92,12 @@ export const ProfileInfo = () => {
 
 
     useEffect(() => {
-        data()
+        try {
+            data()
+        }catch (e) {
+            console.log(e)
+        }
+
     }, []);
 
     if (loading) {
@@ -110,22 +120,15 @@ export const ProfileInfo = () => {
         })
     }
 
-    const handleUpdateUser = (e) => {
+    const handleUpdateUser = async (e) => {
         e.preventDefault();
-        /*const user = {
-            firstname: nameRef.current["value"],
-            lastname: lastNameRef.current["value"],
-            email: emailRef.current["value"],
-            institutionalEmail: institutionalEmailRef.current["value"],
-            role: {id: roleRef.current["value"], label: roleRef.current["value"]},
-            country: countryRef.current["value"],
-            documentType: {id: documentTypeRef.current["value"], name: documentTypeRef.current["value"]},
-            documentNumber: documentNumberRef.current["value"],
-            gender: {id:genderRef.current["value"],name:genderRef.current["value"]},
-            ethnicGroup: {id:ethnicRef.current["value"],name:ethnic.current["value"]},
-            civilStatus: {id:civilStatusRef.current["value"],name:civilStatus.current["value"]},
-        };*/
+        updateUser = await fetchUpdateDataUser(userId,infoUser)
+        navigate('/profile-users', {
+            replace: true
+        });
+
     }
+
 
 
     return (<div className='container h-full'>
