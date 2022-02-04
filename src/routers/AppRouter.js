@@ -8,12 +8,11 @@ import { Login } from '../components/login/Login';
 import { Register } from '../components/register/Register';
 import { DashboardRoutes } from './DashboardRoutes';
 
-import imgBackground from '../components/img/hero-bg.png'
 import { NavbarTest } from '../components/ui/NavbarTest';
 
 export const AppRouter = () => {
 	return (
-		<div style={{ backgroundImage: `url(${imgBackground})` }}>
+		<div /*style={{ backgroundImage: `url(${imgBackground})`}}*/>
 
 			<BrowserRouter>
 				<NavbarTest />

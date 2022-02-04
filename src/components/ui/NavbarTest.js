@@ -42,10 +42,10 @@ export const NavbarTest = () => {
 
 	return (
 		<div>
-			<Disclosure as="nav" className="bg-transparent">
+			<Disclosure as="nav" className="bg-transparent z-50">
 				{({ open }) => (
 					<>
-						<div className=" w-full p-3 sm:px-6 lg:px-8">
+						<div className=" w-full p-3 sm:px-6 lg:px-8 ">
 							<div className="relative flex items-center justify-between h-20 sm:h-20">
 								<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 									{/* Mobile menu button*/}
@@ -124,16 +124,16 @@ export const NavbarTest = () => {
 														</NavLink>
 													)}
 												</Menu.Item>
-												<Menu.Item>
-													{({ active }) => (
-														<NavLink
-															to="/"
-															className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-														>
-															Configuracion
-														</NavLink>
-													)}
-												</Menu.Item>
+												{/*<Menu.Item>*/}
+												{/*	{({ active }) => (*/}
+												{/*		<NavLink*/}
+												{/*			to="/"*/}
+												{/*			className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}*/}
+												{/*		>*/}
+												{/*			Configuracion*/}
+												{/*		</NavLink>*/}
+												{/*	)}*/}
+												{/*</Menu.Item>*/}
 												<Menu.Item>
 													{({ active }) => (
 														<NavLink
