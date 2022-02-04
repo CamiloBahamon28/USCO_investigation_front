@@ -13,6 +13,7 @@ import { Municipality } from '../components/profileAdmin/Controls/municipality/M
 import { User } from '../components/profileAdmin/Controls/user/User';
 import {  ProfileRouter } from '../components/profileAdmin/ProfileRouter';
 import { Register } from '../components/register/Register';
+import {ProfileUserInfo} from "../components/profileUser/ProfileUserInfo";
 
 export const DashboardRoutes = () => {
 	return (
@@ -23,6 +24,7 @@ export const DashboardRoutes = () => {
 				<Route path="/login" element={<Login />} />
 				<Route path="/register" element={<Register />} />
 				<Route path="/profile" element={<ProfileRouter />} />
+				<Route path="/profileUserDefault" element={<ProfileUserInfo />} />
 				<Route path="/profile-users" element={<User />} />
 				<Route path="/profile-country" element={<Country />} />
 				<Route path="/profile-departamento" element={<Departamentos />} />

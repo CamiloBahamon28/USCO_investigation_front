@@ -33,7 +33,7 @@ export const TestLogin = () => {
 		
 		try {
 			const res = await axios.post("/api/auth/login", user)
-
+			console.log(res.data)
 			const role = res.data.role.label
 
 
@@ -45,16 +45,25 @@ export const TestLogin = () => {
 				dispatch(action);
 				myStorage.setItem("Authorization", res.data.token)
 				myStorage.setItem("Rol", role)
-				navigate('/profile', {
-					replace: true
-				});
+				myStorage.setItem("Id",res.data.id)
+
+				if (role === 'Administrador'){
+					navigate('/profile', {
+						replace: true
+					});
+				}else{
+					navigate('/profileUserDefault', {
+						replace: true
+					});
+				}
+
+
 
 		} catch (err) {
 			setError(true)
 			
 		}
 	}
-
 
 	return (
 		<div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
