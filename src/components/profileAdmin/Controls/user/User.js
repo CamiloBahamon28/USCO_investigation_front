@@ -9,7 +9,7 @@ export const User = () => {
 
 	const [loading, setLoading] = useState(false);
 	const [currentPage, setCurrentPage] = useState(1);
-	const [postsPerPage] = useState(10);
+	const [postsPerPage] = useState(8);
 
 
 	const myStorage = window.localStorage
@@ -45,6 +45,7 @@ export const User = () => {
 	// Get current posts
 	const indexOfLastPost = currentPage * postsPerPage;
 	const indexOfFirstPost = indexOfLastPost - postsPerPage;
+	const currentUser = user.slice(indexOfFirstPost, indexOfLastPost);
 
 	// Change page
 	const paginate = pageNumber => setCurrentPage(pageNumber);
@@ -52,11 +53,13 @@ export const User = () => {
 
 	return (<div className='container'>
 		<ProfileNavbar />
-		<UsersCrud users={user} loading={loading}/>
-		 <Pagination
+		<UsersCrud users={currentUser} loading={loading}/>
+		<Pagination
 			postsPerPage={postsPerPage}
 			totalPosts={user.length}
 			paginate={paginate}
+			currentPage={currentPage}
+			setCurrentPage={setCurrentPage}
 		/>
 	</div>);
 };

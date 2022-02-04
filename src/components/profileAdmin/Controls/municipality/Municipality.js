@@ -16,6 +16,7 @@ export const Municipality = () => {
   const [municipality, setMunicipality] = useState([]);
   const [codDepartamento, setCodDepartamento] = useState(5);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
 
     const fetchCountrys = async () => {
@@ -50,6 +51,8 @@ export const Municipality = () => {
 			postsPerPage={postsPerPage}
 			totalPosts={municipality.length}
 			paginate={paginate}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
 		/>
   </div>);
 };

@@ -44,6 +44,8 @@ export const Country = () => {
 			postsPerPage={postsPerPage}
 			totalPosts={countrys.length}
 			paginate={paginate}
+			currentPage={currentPage}
+			setCurrentPage={setCurrentPage}
 		/>
 	</div>);
 };

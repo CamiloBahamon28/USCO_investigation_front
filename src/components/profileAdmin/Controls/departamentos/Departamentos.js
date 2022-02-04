@@ -51,6 +51,8 @@ export const Departamentos = () => {
 			postsPerPage={postsPerPage}
 			totalPosts={departamentos.length}
 			paginate={paginate}
+			currentPage={currentPage}
+			setCurrentPage={setCurrentPage}
 		/>
 	</div>);
 };
