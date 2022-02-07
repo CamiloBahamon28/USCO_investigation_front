@@ -5,6 +5,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import {  MenuIcon, XIcon } from '@heroicons/react/outline'
 import { AuthContext } from '../../auth/authContext'
 import { types } from '../../types/types'
+import {SidebarAdmin} from "../profileAdmin/NavbarAdmin/SidebarAdmin";
 
 const navigation = [
 	{ name: 'Home', to: '/', current: true },
@@ -23,6 +24,8 @@ export const NavbarTest = () => {
 	const navigate = useNavigate();
 	const { user, dispatch } = useContext(AuthContext);
 
+	const role =myStorage.getItem("Rol")
+
 	const handleLogout = () => {
 
 		const action = {
@@ -35,6 +38,8 @@ export const NavbarTest = () => {
 			replace: true
 		})
 		myStorage.removeItem("Authorization");
+		myStorage.removeItem("Rol");
+		myStorage.removeItem("Id");
 	}
 
 	console.log(user)
@@ -81,18 +86,10 @@ export const NavbarTest = () => {
 									</div>
 								</div>
 								<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+									{user.logged ? role === "Administrador" ? <SidebarAdmin handleLogout={()=> handleLogout()}/>
+											:
 
-									{/* Item for notification
-										<button
-										type="button"
-										className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-									>
-										<span className="sr-only">View notifications</span>
-										<BellIcon className="h-6 w-6" aria-hidden="true" />
-									</button> */}
-
-									{/* Profile dropdown */}
-									{user.logged ? <Menu as="div" className="ml-3 relative">
+										<Menu as="div" className="ml-3 relative">
 										<div className='flex items-center'>
 											<p className='mr-2 text-black font-semibold text-xl'>{user.name}</p>
 											<Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
@@ -124,16 +121,6 @@ export const NavbarTest = () => {
 														</NavLink>
 													)}
 												</Menu.Item>
-												{/*<Menu.Item>*/}
-												{/*	{({ active }) => (*/}
-												{/*		<NavLink*/}
-												{/*			to="/"*/}
-												{/*			className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}*/}
-												{/*		>*/}
-												{/*			Configuracion*/}
-												{/*		</NavLink>*/}
-												{/*	)}*/}
-												{/*</Menu.Item>*/}
 												<Menu.Item>
 													{({ active }) => (
 														<NavLink
@@ -149,13 +136,19 @@ export const NavbarTest = () => {
 										</Transition>
 									</Menu>
 
+										//buttons login and register
 										:
-
 										<div className='hidden sm:block'>
-											<NavLink className={({ isActive }) => ' bg-fourth py-2 px-5 ml-8 rounded text-gray-50 no-underline transition duration-400 hover:bg-fourth  ' + (isActive ? 'active' : '')} to="/login">Login</NavLink>
-											<NavLink className={({ isActive }) => ' bg-fourth py-2 px-5 ml-8 rounded text-gray-50 no-underline transition duration-400 hover:bg-fourth  ' + (isActive ? 'active' : '')} to="/register">Registrarte</NavLink>
+											<NavLink
+												className={({isActive}) => ' bg-fourth py-2 px-5 ml-8 rounded text-gray-50 no-underline transition duration-400 hover:bg-fourth  ' + (isActive ? 'active' : '')}
+												to="/login">Login</NavLink>
+											<NavLink
+												className={({isActive}) => ' bg-fourth py-2 px-5 ml-8 rounded text-gray-50 no-underline transition duration-400 hover:bg-fourth  ' + (isActive ? 'active' : '')}
+												to="/register">Registrarte</NavLink>
 										</div>
 									}
+
+
 								</div>
 							</div>
 						</div>
