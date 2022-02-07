@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CountryCrud } from './CountryCrud';
 import Pagination from '../../../ui/Pagination';
-import { ProfileNavbar } from '../../ProfileNavbar';
 
 
 export const Country = () => {
@@ -37,8 +36,7 @@ export const Country = () => {
 	// Change page
 	const paginate = pageNumber => setCurrentPage(pageNumber);
 
-	return (<div className='container'>
-		<ProfileNavbar />
+	return (<div className='mx-2 md:mx-16'>
 		<CountryCrud country={currentCountry} loading={loading} />
 		<Pagination
 			postsPerPage={postsPerPage}

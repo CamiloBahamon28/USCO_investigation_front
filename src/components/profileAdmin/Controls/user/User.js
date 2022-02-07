@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Pagination from '../../../ui/Pagination';
-import { ProfileNavbar } from '../../ProfileNavbar';
 import { UsersCrud } from './UsersCrud';
 
 
@@ -51,8 +50,9 @@ export const User = () => {
 	const paginate = pageNumber => setCurrentPage(pageNumber);
 
 
-	return (<div className='container'>
-		<ProfileNavbar />
+	return (<div className='mx-2 md:mx-16'>
+		{/*<ProfileNavbar />*/}
+
 		<UsersCrud users={currentUser} loading={loading}/>
 		<Pagination
 			postsPerPage={postsPerPage}

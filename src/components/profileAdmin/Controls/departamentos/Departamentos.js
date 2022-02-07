@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import { DepartamentosCrud } from './DepartamentosCrud';
-import { ProfileNavbar } from '../../ProfileNavbar';
 import Pagination from '../../../ui/Pagination';
 
 
@@ -29,9 +28,6 @@ export const Departamentos = () => {
 	
 	useEffect(() => {
 		fetchDepartamentos();
-	 
-	
-	 
 	}, []);
 	
 
@@ -44,8 +40,7 @@ export const Departamentos = () => {
 	const paginate = pageNumber => setCurrentPage(pageNumber);
 
 
-	return (<div className='container'>
-		<ProfileNavbar />
+	return (<div className='mx-2 md:mx-16'>
 		<DepartamentosCrud departamento={currentDepartamentos} loading={loading}/>
 		<Pagination
 			postsPerPage={postsPerPage}

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import { ProfileNavbar } from '../../ProfileNavbar';
 import { MunicipalityCrud } from './MunicipalityCrud';
 import { SelectDepartamento } from './SelectDepartamento';
 import Pagination from '../../../ui/Pagination';
@@ -43,8 +42,7 @@ export const Municipality = () => {
 	// Change page
 	const paginate = pageNumber => setCurrentPage(pageNumber);
 
-  return (<div className='container' >
-    <ProfileNavbar />
+  return (<div className='mx-2 md:mx-16' >
     <SelectDepartamento departamentos={departamentos} setCodDepartamento={setCodDepartamento}/>
     <MunicipalityCrud municipality={currentMunicipality} loading={loading} />
     <Pagination
