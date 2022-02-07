@@ -14,6 +14,8 @@ import { User } from '../components/profileAdmin/Controls/user/User';
 import {  ProfileRouter } from '../components/profileAdmin/ProfileRouter';
 import { Register } from '../components/register/Register';
 import {ProfileUserInfo} from "../components/profileUser/ProfileUserInfo";
+import {AreaNoEducative} from "../components/profileAdmin/Controls/areaNoEducative/AreaNoEducative";
+import {EntityNoEducative} from "../components/profileAdmin/Controls/entityNoEducative/EntityNoEducative";
 
 export const DashboardRoutes = () => {
 	return (
@@ -30,6 +32,8 @@ export const DashboardRoutes = () => {
 				<Route path="/profile-departamento" element={<Departamentos />} />
 				<Route path="/profile-municipality" element={<Municipality />} />
 				<Route path="/profile-edit-info/:userId" element={<ProfileInfo />} />
+				<Route path="/profile-area-no-educative" element={<AreaNoEducative />} />
+				<Route path="/profile-entity-no-educative" element={<EntityNoEducative />} />
 			</Routes>
 		</>
 	)
