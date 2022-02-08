@@ -65,7 +65,8 @@ export const NavbarTest = () => {
 								</div>
 								<div className="flex-1 flex items-center justify-center sm:items-center sm:justify-start">
 									<Link className="flex-shrink-0 flex items-center" to="/">
-										<img className="mx-auto h-16 w-auto" src="https://img.icons8.com/dotty/80/000000/wolf.png" alt="Workflow" />
+										{/*<img className="mx-auto h-16 w-auto" src="https://img.icons8.com/dotty/80/000000/wolf.png" alt="Workflow" />*/}
+										<img src='https://cdn-icons-png.flaticon.com/128/2950/2950372.png' className="mx-auto h-16 w-auto" alt="ant"/>
 									</Link>
 									<div className="hidden sm:block sm:ml-6">
 										<div className="flex space-x-4">
@@ -74,7 +75,7 @@ export const NavbarTest = () => {
 													key={item.name}
 													to={item.to}
 													className={classNames(
-														'text-black hover:bg-fourth hover:text-white',
+														'text-white hover:bg-blue-900 hover:text-white',
 														'px-3 py-2 rounded-md text-base font-medium'
 													)}
 													aria-current={item.current ? 'page' : undefined}
@@ -95,7 +96,7 @@ export const NavbarTest = () => {
 											<Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
 												<span className="sr-only">Open user menu</span>
 												<img
-													className="h-8 w-8 rounded-full "
+													className="h-12 w-12 rounded-full "
 													src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
 													alt=""
 												/>

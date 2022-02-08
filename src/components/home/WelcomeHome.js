@@ -1,22 +1,22 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 
-import research from '../img/research.svg'
+import research from '../img/home.svg'
 import {Wave} from "../ui/Wave";
+import '../ui/css/home.css'
 
 export const WelcomeHome = () => {
     return (
         <div>
             <section className="w-full">
 				<Wave />
-
                 <div className="container flex justify-center ">
-                	<div className="flex ">
-                		<div className="flex flex-col justify-center gap-6 sm:z-10 sm:flex sm:justify-center sm:items-center sm:content-center ">
-                			<h1 className="m-0 text-6xl font-bold text-primary">Bienvenidos </h1>
-                			<h2 className="mr-4 text-2xl">Esta plataforma esta diseñada para investigadores</h2>
+                	<div className="flex gap-8">
+                		<div className="flex flex-col justify-center gap-6 sm:z-10 sm:flex sm:justify-center sm:items-center sm:content-center justify-center text-center -mt-28">
+                			<h1 className="m-0 text-6xl font-bold text-white">Bienvenidos </h1>
+                			<h2 className="mr-4 text-2xl text-white text-center">Esta plataforma esta diseñada para investigadores</h2>
                 			<div className="flex-col">
-                				<div className="flex items-center">
+                				<div className="flex items-center justify-center">
                 					<NavLink className={({ isActive }) => 'mt-4 leading-none py-4 px-10 rounded-md transition duration-500 text-gray-50 bg-primary  shadow-3xl  inline-flex items-center justify-center self-center ' + (isActive ? 'active' : '')} to="/register">
                 						<span className="font-semibold text-base tracking-widest ">Registrate</span>
                 						<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 ml-1 text-lg transition duration-300 transform hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -26,8 +26,8 @@ export const WelcomeHome = () => {
                 				</div>
                 			</div>
                 		</div>
-                		<div className="flex md:z-0 md:flex md:justify-center md:items-center sm:overflow-hidden" >
-                			<img src={research} className="w-full h-auto" alt="Research" />
+                		<div className="flex md:z-0 md:flex md:justify-center md:items-center hidden" >
+                			<img src={research} className=" w-96 h-96 md:h-auto md:w-auto" alt="Research" />
                 		</div>
                 	</div>
                 </div>
