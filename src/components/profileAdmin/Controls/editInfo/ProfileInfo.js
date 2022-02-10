@@ -69,22 +69,28 @@ export const ProfileInfo = () => {
             oneUser = await fetchOneUser(userId);
             setInfoUser(oneUser.data);
 
-            allCountries = await fetchCountries();
+            const [
+                allCountries,
+                allTypeDocuments,
+                allGender,
+                allEthnic,
+                allCivilStatus
+            ] = await Promise.all([
+                fetchCountries(),
+                fetchTypesDocuments(),
+                fetchGender(),
+                fetchEthnicGroup(),
+                fetchCivilStatus()
+            ])
+
             setCountries(allCountries.data)
-
-            allTypeDocuments = await fetchTypesDocuments();
             setTypeDocument(allTypeDocuments.data)
-
-            allGender = await fetchGender();
             setGender(allGender.data)
-
-            allEthnic = await fetchEthnicGroup();
             setEthnic(allEthnic.data)
-
-            allCivilStatus = await fetchCivilStatus();
             setCivilStatus(allCivilStatus.data)
 
             setLoading(false)
+
         } catch (err) {
             console.log(err);
         }

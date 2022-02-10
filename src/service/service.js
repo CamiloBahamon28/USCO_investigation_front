@@ -52,7 +52,7 @@ export const fetchOneUser = async (userId) =>{
     try {
         const oneUser = await axios.get(`/api/users/${userId}`, {
             headers:{
-                Authorization: token
+                Authorization: myStorage.getItem('Authorization')
             }
         });
         return oneUser;
