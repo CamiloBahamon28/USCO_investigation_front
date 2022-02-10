@@ -37,13 +37,13 @@ export const TestLogin = () => {
 				setError(true)
 				switch (err.response.status){
 					case 401:
-						return setNumberError('Error Contraseña Invalida') //clave invalida
+						setNumberError('Error Contraseña Invalida') //clave invalida
 					case 404:
 						switch (err.response.data.errorName) {
 							case 'DELETED':
-								return  setNumberError('Error Usuario Eliminado') //usuario borrado
+								setNumberError('Error Usuario Eliminado') //usuario borrado
 							case 'NOT_FOUND':
-								return setNumberError('Error Usuario Invalido') //Usuario no encontrado
+								setNumberError('Error Usuario Invalido') //Usuario no encontrado
 						}
 				}
 				setTimeout(()=>{setError(false)},3000)
@@ -76,8 +76,6 @@ export const TestLogin = () => {
 			// setError(true)
 		}
 	}
-
-
 
 	return (
 	<div>
