@@ -121,6 +121,7 @@ export const TestRegister = () => {
 													className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 													ref={tipeDocumentRef}
 												>
+													<option key='0' selected hidden>Seleccione...</option>
 													{typeDocument.map((typeDocument) => (
 														<option key={typeDocument.id} value={typeDocument.id}>{typeDocument.name}</option>
 													))}
@@ -164,7 +165,7 @@ export const TestRegister = () => {
 													className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 													ref={countryRef}
 												>
-
+													<option key='0' selected hidden>Seleccione...</option>
 													{countries.map((country) => (
 														<option key={country.id} value={country.id}>{country.name}</option>
 													))}

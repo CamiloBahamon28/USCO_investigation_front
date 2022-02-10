@@ -40,7 +40,7 @@ export const Departamentos = () => {
 	const paginate = pageNumber => setCurrentPage(pageNumber);
 
 
-	return (<div className='mx-2 md:mx-16'>
+	return (<div className='container mx-auto'>
 		<DepartamentosCrud departamento={currentDepartamentos} loading={loading}/>
 		<Pagination
 			postsPerPage={postsPerPage}

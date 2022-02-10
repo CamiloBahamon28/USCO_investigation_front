@@ -36,7 +36,7 @@ export const Country = () => {
 	// Change page
 	const paginate = pageNumber => setCurrentPage(pageNumber);
 
-	return (<div className='mx-2 md:mx-16'>
+	return (<div className='container mx-auto'>
 		<CountryCrud country={currentCountry} loading={loading} />
 		<Pagination
 			postsPerPage={postsPerPage}

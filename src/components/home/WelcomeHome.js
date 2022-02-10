@@ -12,7 +12,7 @@ export const WelcomeHome = () => {
 				<Wave />
                 <div className="container flex justify-center ">
                 	<div className="flex gap-8">
-                		<div className="flex flex-col justify-center gap-6 sm:z-10 sm:flex sm:justify-center sm:items-center sm:content-center justify-center text-center -mt-28">
+                		<div className="flex flex-col justify-center gap-6  sm:flex sm:justify-center sm:items-center sm:content-center justify-center text-center -mt-28">
                 			<h1 className="m-0 text-6xl font-bold text-white">Bienvenidos </h1>
                 			<h2 className="mr-4 text-2xl text-white text-center">Esta plataforma esta diseñada para investigadores</h2>
                 			<div className="flex-col">

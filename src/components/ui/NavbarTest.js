@@ -1,5 +1,5 @@
 import { Fragment, useContext } from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import {Link, NavLink, useLocation, useNavigate} from 'react-router-dom'
 
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import {  MenuIcon, XIcon } from '@heroicons/react/outline'
@@ -9,7 +9,6 @@ import {SidebarAdmin} from "../profileAdmin/NavbarAdmin/SidebarAdmin";
 
 const navigation = [
 	{ name: 'Home', to: '/', current: true },
-	{ name: 'Nosotros', to: '/register', current: false },
 
 ]
 
@@ -42,7 +41,8 @@ export const NavbarTest = () => {
 		myStorage.removeItem("Id");
 	}
 
-	console.log(user)
+	const pathRoute = useLocation().pathname;
+	const isHome = pathRoute === '/';
 
 
 	return (
@@ -75,8 +75,8 @@ export const NavbarTest = () => {
 													key={item.name}
 													to={item.to}
 													className={classNames(
-														'text-white hover:bg-blue-900 hover:text-white',
-														'px-3 py-2 rounded-md text-base font-medium'
+														`text-${isHome?'white':'black'} hover:bg-blue-900 ` +
+														`hover:text-white px-3 py-2 rounded-md text-base font-medium`
 													)}
 													aria-current={item.current ? 'page' : undefined}
 												>

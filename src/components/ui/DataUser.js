@@ -1,43 +1,22 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {NavLink} from "react-router-dom";
-import {fetchOneUser} from "../../service/service";
+import {Load} from "./Load";
 
-export const DataUser = () => {
-    const myStorage = window.localStorage
-    const userId = myStorage.getItem("Id")
-    let oneUser=[];
+export const DataUser = ({dataUser, loading}) => {
 
-    const [dataUser, setDataUser] = useState([]);
-    const [loading, setLoading] = useState(false);
-
-    const data = async () => {
-        setLoading(true)
-        try {
-            oneUser = await fetchOneUser(userId);
-            setDataUser(oneUser.data);
-            console.log(oneUser.data)
-            setLoading(false)
-        } catch (err) {
-            console.log(err);
-        }
+    if (loading) {
+        return (<Load/>);
     }
-
-    useEffect(() => {
-        try {
-            data()
-        }catch (e) {
-            console.log(e)
-        }
-    }, []);
 
     return (
         <div className="mx-2 md:mx-16">
+            {/*<h2 className="px-6 py-3 text-center text-2xl font-medium text-gray-500 uppercase tracking-wider">{dataUser.role?.label || ''}</h2>*/}
             <div className="bg-white shadow overflow-hidden sm:rounded-lg ">
                 <div className="px-4 py-5 sm:px-6 flex justify-between">
                     <h3 className="text-lg leading-6 font-medium text-gray-900">Informacion Personal</h3>
                     <p className="mt-1 max-w-2xl text-sm text-gray-500"/>
                     <div className="ml-4 flex-shrink-0">
-                        <NavLink to={`/profile-edit-info/${userId}`} className="font-medium text-indigo-600 hover:text-indigo-500 " id="edit-btn">
+                        <NavLink to={`/profile-edit-info/${dataUser.id}`} className="font-medium text-indigo-600 hover:text-indigo-500 " id="edit-btn">
                             Editar Informacion
                         </NavLink>
                     </div>

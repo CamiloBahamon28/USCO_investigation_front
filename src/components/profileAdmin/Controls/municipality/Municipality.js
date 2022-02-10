@@ -42,7 +42,7 @@ export const Municipality = () => {
 	// Change page
 	const paginate = pageNumber => setCurrentPage(pageNumber);
 
-  return (<div className='mx-2 md:mx-16' >
+  return (<div className='container mx-auto' >
     <SelectDepartamento departamentos={departamentos} setCodDepartamento={setCodDepartamento}/>
     <MunicipalityCrud municipality={currentMunicipality} loading={loading} />
     <Pagination

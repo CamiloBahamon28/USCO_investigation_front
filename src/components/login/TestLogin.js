@@ -6,6 +6,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import loginImg from '../img/world.svg'
 import { types } from '../../types/types';
 import { AuthContext } from '../../auth/authContext';
+import NotificationLogin from "../ui/modal/NotificationLogin";
 
 
 export const TestLogin = () => {
@@ -19,7 +20,7 @@ export const TestLogin = () => {
 	const passwordRef = useRef();
 
 	const [error, setError] = useState(false)
-
+	const [numberError, setNumberError] = useState('');
 
 	const handleLogin = async (e) => {
 
@@ -30,10 +31,24 @@ export const TestLogin = () => {
 			password: passwordRef.current["value"]
 		};
 
-		
+
 		try {
-			const res = await axios.post("/api/auth/login", user)
-			console.log(res.data)
+			const res = await axios.post("/api/auth/login", user).catch((err)=>{
+				setError(true)
+				switch (err.response.status){
+					case 401:
+						return setNumberError('Error Contraseña Invalida') //clave invalida
+					case 404:
+						switch (err.response.data.errorName) {
+							case 'DELETED':
+								return  setNumberError('Error Usuario Eliminado') //usuario borrado
+							case 'NOT_FOUND':
+								return setNumberError('Error Usuario Invalido') //Usuario no encontrado
+						}
+				}
+				setTimeout(()=>{setError(false)},3000)
+			})
+			// console.log(res.status)
 			const role = res.data.role.label
 
 
@@ -57,15 +72,20 @@ export const TestLogin = () => {
 					});
 				}
 
-
-
 		} catch (err) {
-			setError(true)
-			
+			// setError(true)
 		}
 	}
 
+
+
 	return (
+	<div>
+			<NotificationLogin error={error} numberError={numberError}/>
+			{/*{error && (
+				// <span className="text-red-500">Ohhh Lo sentimos, Algo salio mal Intentalo De nuevo</span>
+
+			)}*/}
 		<div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
 			<div className="max-w-md w-full space-y-8">
 				<div>
@@ -89,10 +109,7 @@ export const TestLogin = () => {
 								ref={passwordRef}
 							/>
 						</div>
-						
-						{error && (
-							<span className="text-red-500">Ohhh Lo sentimos, Algo salio mal Intentalo De nuevo</span>
-						)}
+
 					</div>
 
 
@@ -111,6 +128,7 @@ export const TestLogin = () => {
 				</form>
 			</div>
 		</div>
+	</div>
 	)
 }
 
