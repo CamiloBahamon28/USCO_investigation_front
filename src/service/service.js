@@ -88,6 +88,18 @@ export const fetchDeletUser = async (userIdToGet) =>{
         console.log(e)
     }
 }
+export const fetchRoles = async () =>{
+    try {
+        const allRoles = await axios.get(`/api/roles`, {
+            headers:{
+                Authorization: myStorage.getItem('Authorization')
+            }
+        })
+        return allRoles;
+    }catch (e) {
+        console.log(e)
+    }
+}
 
 
 

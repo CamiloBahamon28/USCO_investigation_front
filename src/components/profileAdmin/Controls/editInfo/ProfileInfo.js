@@ -7,7 +7,7 @@ import {
     fetchCountries,
     fetchEthnicGroup,
     fetchGender,
-    fetchOneUser, fetchTypesDocuments, fetchUpdateDataUser
+    fetchOneUser, fetchRoles, fetchTypesDocuments, fetchUpdateDataUser
 } from "../../../../service/service";
 
 
@@ -15,7 +15,6 @@ export const ProfileInfo = () => {
 
     const myStorage = window.localStorage
     const roleUser = myStorage.getItem("Rol")
-    {/*{roleUser == 'Administrador'}*/}
     const nameRef = useRef();
     const lastNameRef = useRef();
     const emailRef = useRef();
@@ -53,6 +52,7 @@ export const ProfileInfo = () => {
     const [gender, setGender] = useState([]);
     const [ethnic, setEthnic] = useState([]);
     const [civilStatus, setCivilStatus] = useState([]);
+    const [roles, setRoles] = useState([]);
 
     let oneUser = []
     let allCountries = []
@@ -61,6 +61,7 @@ export const ProfileInfo = () => {
     let allEthnic = []
     let allCivilStatus = []
     let updateUser = []
+    let allRoles = []
 
     const data = async () => {
         setLoading(true)
@@ -74,13 +75,15 @@ export const ProfileInfo = () => {
                 allTypeDocuments,
                 allGender,
                 allEthnic,
-                allCivilStatus
+                allCivilStatus,
+                allRoles
             ] = await Promise.all([
                 fetchCountries(),
                 fetchTypesDocuments(),
                 fetchGender(),
                 fetchEthnicGroup(),
-                fetchCivilStatus()
+                fetchCivilStatus(),
+                fetchRoles()
             ])
 
             setCountries(allCountries.data)
@@ -88,7 +91,7 @@ export const ProfileInfo = () => {
             setGender(allGender.data)
             setEthnic(allEthnic.data)
             setCivilStatus(allCivilStatus.data)
-
+            setRoles(allRoles.data)
             setLoading(false)
 
         } catch (err) {
@@ -142,7 +145,7 @@ export const ProfileInfo = () => {
 
     }
 
-
+    console.log(roleUser)
     return (
         <div className='container mx-auto'>
             <div className="bg-white shadow overflow-hidden sm:rounded-lg mt-6">
@@ -210,6 +213,8 @@ export const ProfileInfo = () => {
                                     />
                                 </dd>
                             </div>
+
+                            { roleUser !== "Administrador"  ?
                             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt className="text-sm font-medium text-gray-500">Rol</dt>
                                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
@@ -223,6 +228,27 @@ export const ProfileInfo = () => {
                                     />
                                 </dd>
                             </div>
+                                :
+                            <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                <dt className="text-sm font-medium text-gray-500">Rol</dt>
+                                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                    <select
+                                        id="country"
+                                        autoComplete="country-name"
+                                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                        // ref={countryRef}
+                                        name="role_id"
+                                        value={infoUser.role?.id || ''}
+                                        onChange={handleChange}
+                                    >
+                                        {roles.map((rol) => (
+                                            <option key={rol.id} value={rol.id}>{rol.label}</option>
+                                        ))}
+                                    </select>
+                                </dd>
+                            </div>
+                                }
+
                             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt className="text-sm font-medium text-gray-500">Pais</dt>
                                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
