@@ -1,32 +1,18 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 import {Load} from '../../../ui/Load';
-import {NavLink, useNavigate} from 'react-router-dom';
-import {fetchDeletUser} from "../../../../service/service";
+import {NavLink} from 'react-router-dom';
+import NotificationDelete from "../../../ui/modal/NotificationDelete";
 
-export const UsersCrud = ({users, loading}) => {
+export const UsersCrud = ({users, loading, deletePerson , handleDeleteUser, deleteFrom}) => {
 
     if (loading) {
         return (<Load/>);
     }
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const navigate = useNavigate();
-
-    let deleteUser;
-
-	// eslint-disable-next-line react-hooks/rules-of-hooks
-	const [deletePerson, setDeletePerson] = useState(false);
-	const handleDeleteUser = async (userId) => {
-		setDeletePerson(false)
-        deleteUser = await fetchDeletUser(userId);
-        setDeletePerson(true)
-		console.log(userId)
-    }
-
     return (
-        <div>
-			{deletePerson ? <p>borrado</p> : ''}
+        <div className=''>
+            <NotificationDelete deletePerson={deletePerson} deleteFrom={deleteFrom}/>
             <div className="flex flex-col">
                 <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
