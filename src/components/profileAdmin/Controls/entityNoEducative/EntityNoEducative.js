@@ -59,7 +59,7 @@ export const EntityNoEducative = () => {
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
-        <div className="mx-2 md:mx-16">
+        <div className="container mx-auto">
             <CrudEntityNoEducative entities={currentEntitiesNoEducatives} loading={loading}/>
             <Pagination
                 postsPerPage={postsPerPage}
