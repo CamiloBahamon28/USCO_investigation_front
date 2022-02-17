@@ -26,11 +26,10 @@ export const SelectDepartamento = ({departamentos, setCodDepartamento}) => {
 					autoComplete="country-name"
 					className="mt-1 block  py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 					ref={departamentoRef}
-
 				>
 
 					{departamentos.map((departamento) => (
-						<option key={departamento.codigoDepartamento} value={departamento.codigoDepartamento} >{departamento.nombreDepartamento}</option>
+						<option key={departamento.code} value={departamento.id} >{departamento.name}</option>
 					))}
 
 				</select>
