@@ -54,7 +54,7 @@ export const TestLogin = () => {
 
 				const action = {
 					type: types.login,
-					payload: { username: numDocumentRef.current["value"]}
+					payload: { username: numDocumentRef.current["value"], rol: role}
 				}
 		
 				dispatch(action);
