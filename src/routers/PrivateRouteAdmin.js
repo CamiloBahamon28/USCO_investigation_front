@@ -13,10 +13,15 @@ import {Municipality} from "../components/profileAdmin/Controls/municipality/Mun
 import {ProfileInfo} from "../components/profileAdmin/Controls/editInfo/ProfileInfo";
 import {AreaNoEducative} from "../components/profileAdmin/Controls/areaNoEducative/AreaNoEducative";
 import {AreaNoEducativeEdit} from "../components/profileAdmin/Controls/areaNoEducative/AreaNoEducativeEdit";
-import {AreaNoEducativeNew} from "../components/profileAdmin/Controls/areaNoEducative/AreaNoEducativeNew";
 import {EntityNoEducative} from "../components/profileAdmin/Controls/entityNoEducative/EntityNoEducative";
 import {EntityNoEducativeEdit} from "../components/profileAdmin/Controls/entityNoEducative/EntityNoEducativeEdit";
-import {EntityNoEducativeNew} from "../components/profileAdmin/Controls/entityNoEducative/EntityNoEducativeNew";
+import {EntityEducative} from "../components/profileAdmin/Controls/entityEducative/EntityEducative";
+import { NewEntityEducative } from '../components/profileAdmin/Controls/entityEducative/NewEntityEducative';
+import { EditEntityEducative } from '../components/profileAdmin/Controls/entityEducative/EditEntityEducative';
+import { NewEntityNoEducative } from '../components/profileAdmin/Controls/entityNoEducative/NewEntityNoEducative';
+import { NewAreaNoEducative } from '../components/profileAdmin/Controls/areaNoEducative/NewAreaNoEducative';
+import { Faculties } from '../components/profileAdmin/Controls/faculties/Faculties';
+import { NewFaculties } from '../components/profileAdmin/Controls/faculties/NewFaculties';
 
 export const PrivateRouteAdmin = () => {
     return (
@@ -28,12 +33,23 @@ export const PrivateRouteAdmin = () => {
                 <Route path="/profile-departamento" element={<Departamentos />} />
                 <Route path="/profile-municipality" element={<Municipality />} />
                 <Route path="/profile-edit-info/:userId" element={<ProfileInfo />} />
-                <Route path="/profile-area-no-educative" element={<AreaNoEducative />} />
-                <Route path="/are-no-educative/:areaId" element={<AreaNoEducativeEdit /> } />
-                <Route path="/are-no-educative/new" element={<AreaNoEducativeNew /> } />
+
+                <Route path="/profile-entity-educative" element={<EntityEducative />} />
+                <Route path="/profile-entity-educative/new" element={<NewEntityEducative />} />
+                <Route path="/profile-entity-educative/edit/:entityId" element={<EditEntityEducative />} />
+
                 <Route path="/profile-entity-no-educative" element={<EntityNoEducative />} />
+                <Route path="/entity-no-educative/new" element={<NewEntityNoEducative />} />
                 <Route path="/entity-no-educative/:entityId" element={<EntityNoEducativeEdit />} />
-                <Route path="/entity-no-educative/new" element={<EntityNoEducativeNew />} />
+
+                <Route path="/profile-area-no-educative" element={<AreaNoEducative />} />
+                <Route path="/profile-are-no-educative/new" element={<NewAreaNoEducative /> } />
+                <Route path="/are-no-educative/:areaId" element={<AreaNoEducativeEdit /> } />
+
+                <Route path="/profile-faculty" element={<Faculties />} />
+                <Route path="/profile-faculty/new" element={<NewFaculties />} />
+
+
             </Routes>
         </>
     );

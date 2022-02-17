@@ -36,8 +36,8 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Area No Educativo',
-        path: '/profile-area-no-educative',
+        title: 'Ente Educativo',
+        path: '/profile-entity-educative',
         icon: <IoIcons.IoSchoolOutline />,
         cName: 'nav-text'
     },
@@ -46,5 +46,17 @@ export const SidebarData = [
         path: '/profile-entity-no-educative',
         icon: <AiIcons.AiOutlineBank />,
         cName: 'nav-text',
-    }
+    },
+    {
+        title: 'Facultad',
+        path: '/profile-faculty',
+        icon: <AiIcons.AiOutlineBank />,
+        cName: 'nav-text',
+    },
+    {
+        title: 'Area No Educativo',
+        path: '/profile-area-no-educative',
+        icon: <IoIcons.IoSchoolOutline />,
+        cName: 'nav-text'
+    },
 ];
