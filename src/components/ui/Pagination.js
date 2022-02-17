@@ -7,7 +7,7 @@ function classNames(...classes) {
 
 const Pagination = ({ postsPerPage, totalPosts, paginate,currentPage,setCurrentPage }) => {
 	const pageNumbers = [];
-	console.log('postsPerPage',postsPerPage,'  -totalPosts',totalPosts,'  -paginate',pageNumbers, '-currentPage',currentPage)
+	// console.log('postsPerPage',postsPerPage,'  -totalPosts',totalPosts,'  -paginate',pageNumbers, '-currentPage',currentPage)
 
 	for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
 		pageNumbers.push(i);
