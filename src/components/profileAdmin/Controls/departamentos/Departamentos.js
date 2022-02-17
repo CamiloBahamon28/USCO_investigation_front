@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 import { DepartamentosCrud } from './DepartamentosCrud';
 import Pagination from '../../../ui/Pagination';
+import { fetchDepartamentos } from '../../../../service/service';
 
 
 export const Departamentos = () => {
@@ -15,10 +15,10 @@ export const Departamentos = () => {
 
 	const [departamentos, setDepartamentos] = useState([]);
 
-	const fetchDepartamentos = async () => {
+	const data = async () => {
 		setLoading(true);
 		try {
-			const allDepartamentos = await axios.get("/api/departamentos")
+			let allDepartamentos = await fetchDepartamentos();
 			setDepartamentos(allDepartamentos.data)
 		} catch (err) {
 			console.log(err);
@@ -27,7 +27,7 @@ export const Departamentos = () => {
 	};
 	
 	useEffect(() => {
-		fetchDepartamentos();
+		data();
 	}, []);
 	
 

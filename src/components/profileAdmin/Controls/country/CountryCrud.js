@@ -34,12 +34,7 @@ export const CountryCrud = ({country, loading}) => {
                                 >
                                     Nombre Pais
                                 </th>
-                                <th
-                                    scope="col"
-                                    className=" py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                >
-                                    Acciones
-                                </th>
+                                
                             </tr>
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
@@ -51,9 +46,7 @@ export const CountryCrud = ({country, loading}) => {
                                     <td className="px-6 py-4 whitespace-nowrap">
                                         <div className="text-sm text-gray-900">{country.name}</div>
                                     </td>
-                                    <td className="">
-
-                                    </td>
+                                    
                                 </tr>
                             ))}
                             </tbody>

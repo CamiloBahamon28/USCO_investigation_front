@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+
 
 import { MunicipalityCrud } from './MunicipalityCrud';
 import { SelectDepartamento } from './SelectDepartamento';
 import Pagination from '../../../ui/Pagination';
+import { fetchDepartamentos, fetchMunicipalities } from '../../../../service/service';
 
 export const Municipality = () => {
 
@@ -18,20 +19,21 @@ export const Municipality = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
 
-    const fetchCountrys = async () => {
+    const data = async () => {
       setLoading(true);
       try {
-        const allDepartamentos = await axios.get("/api/departamentos")
+        let allDepartamentos = await fetchDepartamentos();
         setDepartamentos(allDepartamentos.data)
-        const allMunicipality = await axios.get(`api/departamentos/${codDepartamento}/municipios`)
+        let allMunicipality = await fetchMunicipalities(codDepartamento);
         setMunicipality(allMunicipality.data)
+        console.log(allMunicipality.data);
       } catch (err) {
         console.log(err);
       }
       setLoading(false);
     };
 
-    fetchCountrys();
+    data();
   }, [codDepartamento]);
 
 	// Get current posts

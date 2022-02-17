@@ -42,12 +42,7 @@ export const DepartamentosCrud = ({departamento, loading}) => {
                                 >
                                     Codigo Departamento
                                 </th>
-                                <th
-                                    scope="col"
-                                    className=" py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                >
-                                    Acciones
-                                </th>
+                                
                             </tr>
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
@@ -55,16 +50,13 @@ export const DepartamentosCrud = ({departamento, loading}) => {
                                 <tr key={departamento.id}>
 
                                     <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="text-sm text-gray-900">{departamento.nombreDepartamento}</div>
+                                        <div className="text-sm text-gray-900">{departamento.name}</div>
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="text-sm text-gray-900">{departamento.nombreRegion}</div>
+                                        <div className="text-sm text-gray-900">{departamento.region.name}</div>
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="text-sm text-gray-900">{departamento.codigoDepartamento}</div>
-                                    </td>
-                                    <td className="">
-
+                                        <div className="text-sm text-gray-900">{departamento.code}</div>
                                     </td>
                                 </tr>
                             ))}
