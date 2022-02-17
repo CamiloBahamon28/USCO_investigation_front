@@ -1,8 +1,9 @@
 import React from 'react';
 import {Load} from "../../../ui/Load";
 import {NavLink} from "react-router-dom";
+import NotificationDelete from '../../../ui/modal/NotificationDelete';
 
-export const CrudEntityNoEducative = ({entities, loading}) => {
+export const CrudEntityNoEducative = ({entities, loading,deleteEntityNo, deleteFrom,handleDeleteEntityNo}) => {
 
     if (loading) {
         return (<Load/>);
@@ -10,6 +11,7 @@ export const CrudEntityNoEducative = ({entities, loading}) => {
 
     return (
         <div>
+            <NotificationDelete actionDelete={deleteEntityNo} deleteFrom={deleteFrom}/>
             <div className="flex flex-col">
                 <div className="flex justify-end">
                     <NavLink to={`/entity-no-educative/new`}
@@ -37,7 +39,7 @@ export const CrudEntityNoEducative = ({entities, loading}) => {
                                         scope="col"
                                         className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                     >
-                                        Id
+                                        Nombre Ente No Educacional
                                     </th>
                                     <th
                                         scope="col"
@@ -47,9 +49,9 @@ export const CrudEntityNoEducative = ({entities, loading}) => {
                                     </th>
                                     <th
                                         scope="col"
-                                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                        className=" py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                     >
-                                        Nombre Entidad
+                                        Compañia
                                     </th>
                                     <th
                                         scope="col"
@@ -61,26 +63,10 @@ export const CrudEntityNoEducative = ({entities, loading}) => {
                                         scope="col"
                                         className=" py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                     >
-                                        Departamento
+                                        Municipio
                                     </th>
-                                    <th
-                                        scope="col"
-                                        className=" py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                    >
-                                        Ciudad
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className=" py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                    >
-                                        Empresa
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className=" py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                    >
-                                        Estado
-                                    </th>
+                                   
+                                  
                                     <th
                                         scope="col"
                                         className=" py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -93,28 +79,19 @@ export const CrudEntityNoEducative = ({entities, loading}) => {
                                 {entities.map((entity) => (
                                     <tr key={entity.id}>
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-gray-900">{entity.id}</div>
+                                            <div className="text-sm text-gray-900">{entity.name}</div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <div className="text-sm text-gray-900">{entity.nit}</div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-gray-900">{entity.nameEntity}</div>
+                                            <div className="text-sm text-gray-900">{entity.company}</div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap ">
-                                            <div className="text-sm text-gray-900">{entity.country}</div>
+                                            <div className="text-sm text-gray-900">{entity.country.name}</div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-gray-900">{entity.departamento}</div>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-gray-900">{entity.municipality}</div>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-gray-900">{entity.bussiness}</div>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-gray-900">{entity.status}</div>
+                                            <div className="text-sm text-gray-900">{entity.municipio?.name}</div>
                                         </td>
                                         <td className="">
                                             <NavLink
@@ -126,7 +103,7 @@ export const CrudEntityNoEducative = ({entities, loading}) => {
                                             <button
                                                 type='submit'
                                                 className="inline-flex items-center px-3 py-2 border border-red-500 rounded-md shadow-sm text-sm font-medium text-white bg-red-500 hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                                // onClick={() => handleDeleteUser(person.id)}
+                                                onClick={() => handleDeleteEntityNo(entity.id)}
                                             >
                                                 Borrar
                                             </button>

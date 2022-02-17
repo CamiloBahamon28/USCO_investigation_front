@@ -1,54 +1,42 @@
 import React, {useEffect, useState} from 'react';
 import {CrudEntityNoEducative} from "./CrudEntityNoEducative";
 import Pagination from "../../../ui/Pagination";
+import {  fetchEntityNoEducative, fetchEntityNoEducativeDelete } from '../../../../service/service';
 
 export const EntityNoEducative = () => {
-
-    const EntityNoEducativeArray = [
-        {
-            id: 1,
-            nit: 123,
-            nameEntity: 'Entidad 1',
-            country: 'Colombia',
-            departamento: 'Huila',
-            municipality: 'Neiva',
-            bussiness: 'Usco',
-            status: 'activo'
-        },
-        {
-            id: 2,
-            nit: 456,
-            nameEntity: 'Entidad 2',
-            country: 'Colombia',
-            departamento: 'Huila',
-            municipality: 'Neiva',
-            bussiness: 'Usco',
-            status: 'activo'
-        },
-        {
-            id: 3,
-            nit: 789,
-            nameEntity: 'Entidad 3',
-            country: 'Colombia',
-            departamento: 'Huila',
-            municipality: 'Neiva',
-            bussiness: 'Usco',
-            status: 'activo'
-        },
-    ]
+    
 
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(10);
 
+    const [deleteFrom, setDeleteFrom] = useState('');
+    const [deleteEntityNo, setDeleteEntityNo] = useState(false)
+
+    let getAllEntityNoEducative= []
     const [entitiesNoEducative, setEntitiesNoEducative] = useState([]);
 
-    useEffect(() => {
-        setLoading(true);
-        setEntitiesNoEducative(EntityNoEducativeArray)
+    const data = async () => {
+        setLoading(true)
+        getAllEntityNoEducative = await fetchEntityNoEducative();
+        setEntitiesNoEducative(getAllEntityNoEducative.data)
         setLoading(false)
+    }
+
+    useEffect(() => {
+        data();
     }, []);
 
+    const handleDeleteEntityNo = async(idEducationalEntity) =>{
+        setDeleteEntityNo(true)
+        setDeleteFrom('Entidad No Educativa Eliminada')
+
+         await fetchEntityNoEducativeDelete(idEducationalEntity);
+    
+        setTimeout(()=>{
+            setDeleteEntityNo(false)
+        }, data(), 3000)
+    }
 
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
@@ -58,9 +46,10 @@ export const EntityNoEducative = () => {
     // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
+
     return (
         <div className="container mx-auto">
-            <CrudEntityNoEducative entities={currentEntitiesNoEducatives} loading={loading}/>
+            <CrudEntityNoEducative entities={currentEntitiesNoEducatives} loading={loading} deleteEntityNo={deleteEntityNo} deleteFrom={deleteFrom} handleDeleteEntityNo={handleDeleteEntityNo}/>
             <Pagination
                 postsPerPage={postsPerPage}
                 totalPosts={entitiesNoEducative.length}

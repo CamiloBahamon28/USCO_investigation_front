@@ -45,12 +45,12 @@ export const EntityNoEducativeNew = () => {
                     <dl>
                         <form onSubmit={handleNewEntity}>
                             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt className="text-sm font-medium text-gray-500">NIT</dt>
+                                <dt className="text-sm font-medium text-gray-500">Nombre Ente No Educacional</dt>
                                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                                     <input type="text" required
                                            className="appearance-none  border-t-0 border-r-0 border-l-0 border-b-2 relative block w-full  py-2 border bg-transparent placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-primary focus:z-10 sm:text-sm"
                                            placeholder="Nombre no Ingresado"
-                                           ref={nitRef}
+                                           ref={nameEntityRef}
                                            name="firstname"
                                         // value={infoUser.firstname}
                                         // onChange={handleChange}
@@ -58,7 +58,7 @@ export const EntityNoEducativeNew = () => {
                                 </dd>
                             </div>
                             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt className="text-sm font-medium text-gray-500">Nombre Ente No Educativo</dt>
+                                <dt className="text-sm font-medium text-gray-500">Nit</dt>
                                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                                     <input type="text" required
                                            className="appearance-none  border-t-0 border-r-0 border-l-0 border-b-2 relative block w-full  py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-primary focus:z-10 sm:text-sm"
@@ -71,7 +71,7 @@ export const EntityNoEducativeNew = () => {
                                 </dd>
                             </div>
                             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt className="text-sm font-medium text-gray-500">Pais</dt>
+                                <dt className="text-sm font-medium text-gray-500">Compañia</dt>
                                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                                     <input type="text"
                                            className="appearance-none bg-transparent border-t-0 border-r-0 border-l-0 border-b-2 relative block w-full  py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-primary focus:z-10 sm:text-sm"
@@ -84,7 +84,7 @@ export const EntityNoEducativeNew = () => {
                                 </dd>
                             </div>
                             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt className="text-sm font-medium text-gray-500">Departamento</dt>
+                                <dt className="text-sm font-medium text-gray-500">Country</dt>
                                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                                     <input type="text"
                                            className="appearance-none bg-transparent border-t-0 border-r-0 border-l-0 border-b-2 relative block w-full  py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-primary focus:z-10 sm:text-sm"
@@ -97,7 +97,7 @@ export const EntityNoEducativeNew = () => {
                                 </dd>
                             </div>
                             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt className="text-sm font-medium text-gray-500">Ciudad</dt>
+                                <dt className="text-sm font-medium text-gray-500">Departamento</dt>
                                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                                     <input type="text"
                                            className="appearance-none bg-transparent border-t-0 border-r-0 border-l-0 border-b-2 relative block w-full  py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-primary focus:z-10 sm:text-sm"
