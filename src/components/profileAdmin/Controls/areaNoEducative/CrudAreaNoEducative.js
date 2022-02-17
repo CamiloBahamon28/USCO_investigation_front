@@ -1,18 +1,20 @@
 import React from 'react';
 import {Load} from "../../../ui/Load";
 import {NavLink} from "react-router-dom";
+import NotificationDelete from '../../../ui/modal/NotificationDelete';
 
-export const CrudAreaNoEducative = ({areas, loading}) => {
+export const CrudAreaNoEducative = ({areas, loading,deleteAreaNo, deleteFrom, handleDeleteAreaNo}) => {
 
     if (loading) {
         return (<Load/>);
     }
 
     return (
-        <div className="container mx-auto">
+        <div className="">
+            <NotificationDelete actionDelete={deleteAreaNo} deleteFrom={deleteFrom}/>
             <div className="flex flex-col ">
                 <div className="flex justify-end">
-                    <NavLink to={`/are-no-educative/new`}
+                    <NavLink to={`/profile-are-no-educative/new`}
                              className="font-medium text-indigo-600 hover:text-indigo-500 p-3"
                              id="edit-btn">
                         Crear Area
@@ -37,25 +39,19 @@ export const CrudAreaNoEducative = ({areas, loading}) => {
                                         scope="col"
                                         className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                     >
-                                        Id
+                                        Nombre Area No Educativa
                                     </th>
                                     <th
                                         scope="col"
                                         className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                     >
-                                        Nombre Area
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                    >
-                                        Ente No Educativo
+                                        Entidad No Educativa
                                     </th>
                                     <th
                                         scope="col"
                                         className=" py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                     >
-                                        Ciudad
+                                        Municipio
                                     </th>
                                     <th
                                         scope="col"
@@ -75,19 +71,16 @@ export const CrudAreaNoEducative = ({areas, loading}) => {
                                 {areas.map((area) => (
                                     <tr key={area.id}>
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-gray-900">{area.id}</div>
+                                            <div className="text-sm text-gray-900">{area.name}</div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-gray-900">{area.nameArea}</div>
+                                            <div className="text-sm text-gray-900">{area.nonEducationalEntity?.name}</div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-gray-900">{area.entityNoEducative}</div>
+                                            <div className="text-sm text-gray-900">{area.municipio?.name}</div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-gray-900">{area.municipality}</div>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-gray-900">{area.status}</div>
+                                            <div className="text-sm text-gray-900">{area.inactive}</div>
                                         </td>
                                         <td className="">
                                             <NavLink
@@ -101,7 +94,7 @@ export const CrudAreaNoEducative = ({areas, loading}) => {
                                             <button
                                                 type='submit'
                                                 className="inline-flex items-center px-3 py-2 border border-red-500 rounded-md shadow-sm text-sm font-medium text-white bg-red-500 hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                                // onClick={() => handleDeleteUser(person.id)}
+                                                onClick={() => handleDeleteAreaNo(area.id)}
                                             >
                                                 Borrar
                                             </button>
