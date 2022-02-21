@@ -8,7 +8,7 @@ import { types } from '../../types/types'
 import {SidebarAdmin} from "../profileAdmin/NavbarAdmin/SidebarAdmin";
 
 const navigation = [
-	{ name: 'Home', to: '/', current: true },
+	{ name: 'Inicio', to: '/', current: true },
 
 ]
 
@@ -115,7 +115,7 @@ export const NavbarTest = () => {
 												<Menu.Item>
 													{({ active }) => (
 														<NavLink
-															to="/profile"
+															to="/profileUserDefault"
 															className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
 														>
 															Perfil
@@ -142,10 +142,10 @@ export const NavbarTest = () => {
 										<div className='hidden sm:block'>
 											<NavLink
 												className={({isActive}) => ' bg-fourth py-2 px-5 ml-8 rounded text-gray-50 no-underline transition duration-400 hover:bg-fourth  ' + (isActive ? 'active' : '')}
-												to="/login">Login</NavLink>
+												to="/login">Iniciar Sesion</NavLink>
 											<NavLink
 												className={({isActive}) => ' bg-fourth py-2 px-5 ml-8 rounded text-gray-50 no-underline transition duration-400 hover:bg-fourth  ' + (isActive ? 'active' : '')}
-												to="/register">Registrarte</NavLink>
+												to="/register">Registrate</NavLink>
 										</div>
 									}
 

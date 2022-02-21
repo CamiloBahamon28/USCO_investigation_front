@@ -14,7 +14,7 @@ export const Municipality = () => {
 
   const [departamentos, setDepartamentos] = useState([]);
   const [municipality, setMunicipality] = useState([]);
-  const [codDepartamento, setCodDepartamento] = useState(5);
+  const [codDepartamento, setCodDepartamento] = useState(1);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
