@@ -53,12 +53,7 @@ export const CrudAreaNoEducative = ({areas, loading,deleteAreaNo, deleteFrom, ha
                                     >
                                         Municipio
                                     </th>
-                                    <th
-                                        scope="col"
-                                        className=" py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                    >
-                                        Estado
-                                    </th>
+                                   
                                     <th
                                         scope="col"
                                         className=" py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -79,13 +74,10 @@ export const CrudAreaNoEducative = ({areas, loading,deleteAreaNo, deleteFrom, ha
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <div className="text-sm text-gray-900">{area.municipio?.name}</div>
                                         </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-gray-900">{area.inactive}</div>
-                                        </td>
+                                        
                                         <td className="">
                                             <NavLink
-                                                to={`/are-no-educative/${area.id}`}
-                                                // to={`/profile-edit-info/${person.id}`}
+                                                to={`/profile-are-no-educative/${area.id}`}
                                                 className="mr-3 inline-flex items-center px-3 py-2 border border-indigo-600 rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                             >
                                                 Editar
