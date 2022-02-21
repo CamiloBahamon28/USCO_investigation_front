@@ -200,7 +200,7 @@ export const AreaNoEducativeEdit = () => {
 											ref={departamentoRef}
 											value={areaNo.municipio.departamento_id}
 											onChange={handleChangeDepartamento}
-								
+
 										>
 											{departamentos.map((departamento) => (
 												<option key={departamento.id} value={departamento.id}>{departamento.name}</option>
