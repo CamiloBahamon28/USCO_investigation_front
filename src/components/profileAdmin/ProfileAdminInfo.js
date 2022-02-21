@@ -35,7 +35,7 @@ export const ProfileAdminInfo = () => {
 		}
 	}, []);
 	return (
-		<div className="container mx-auto">
+		<div className="container mx-auto  ">
 			<DataUser dataUser={dataUser} loading={loading}/>
 		</div>
 	)
