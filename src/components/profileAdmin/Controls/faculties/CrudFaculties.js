@@ -80,7 +80,7 @@ return (
                                     </td>
                                     <td className="">
                                         <NavLink
-                                            to={`/are-no-educative/${faculty.id}`}
+                                            to={`/profile-faculty/edit/${faculty.id}`}
                                             // to={`/profile-edit-info/${person.id}`}
                                             className="mr-3 inline-flex items-center px-3 py-2 border border-indigo-600 rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                         >
