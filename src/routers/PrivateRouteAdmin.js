@@ -22,6 +22,7 @@ import { NewEntityNoEducative } from '../components/profileAdmin/Controls/entity
 import { NewAreaNoEducative } from '../components/profileAdmin/Controls/areaNoEducative/NewAreaNoEducative';
 import { Faculties } from '../components/profileAdmin/Controls/faculties/Faculties';
 import { NewFaculties } from '../components/profileAdmin/Controls/faculties/NewFaculties';
+import { EditFaculties } from '../components/profileAdmin/Controls/faculties/EditFaculties';
 
 export const PrivateRouteAdmin = () => {
     return (
@@ -44,10 +45,11 @@ export const PrivateRouteAdmin = () => {
 
                 <Route path="/profile-area-no-educative" element={<AreaNoEducative />} />
                 <Route path="/profile-are-no-educative/new" element={<NewAreaNoEducative /> } />
-                <Route path="/are-no-educative/:areaId" element={<AreaNoEducativeEdit /> } />
+                <Route path="/profile-are-no-educative/:areaNoId" element={<AreaNoEducativeEdit /> } />
 
                 <Route path="/profile-faculty" element={<Faculties />} />
                 <Route path="/profile-faculty/new" element={<NewFaculties />} />
+                <Route path="/profile-faculty/edit/:facultyId" element={<EditFaculties />} />
 
 
             </Routes>

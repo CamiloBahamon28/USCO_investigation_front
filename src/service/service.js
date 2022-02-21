@@ -170,6 +170,19 @@ export const fetchEntityEducativeOne = async (idEntity) =>{
     }
 }
 
+export const fetchEntityEducativeEdit = async (idEntity,entity) =>{
+    try{
+        const newEntity = await axios.put(`/api/educationalEntities/${idEntity}`,entity,{
+            headers:{
+                Authorization: myStorage.getItem('Authorization')
+            }
+        })
+        return newEntity;
+    }catch (e) {
+        console.log(e)
+    }
+}
+
 export const fetchEntityNoEducative = async () =>{
     try{
         const newEntityNo = await axios.get(`/api/nonEducationalEntities`,{
@@ -204,6 +217,32 @@ export const fetchEntityNoEducativeNew = async (entityNo) =>{
             }
         })
         return deleteEntityNo;
+    }catch (e) {
+        console.log(e)
+    }
+}
+
+export const fetchEntityNoEducativeOne = async (idEntity) =>{
+    try{
+        const oneEntityNo = await axios.get(`/api/nonEducationalEntities/${idEntity}`,{
+            headers:{
+                Authorization: myStorage.getItem('Authorization')
+            }
+        })
+        return oneEntityNo;
+    }catch (e) {
+        console.log(e)
+    }
+}
+
+export const fetchEntityNoEducativeEdit = async (idEntity,entity) =>{
+    try{
+        const newEntity = await axios.put(`/api/nonEducationalEntities/${idEntity}`,entity,{
+            headers:{
+                Authorization: myStorage.getItem('Authorization')
+            }
+        })
+        return newEntity;
     }catch (e) {
         console.log(e)
     }
@@ -248,6 +287,33 @@ export const fetchAreaNoEducativeNew = async (AreaNo) =>{
     }
 }
 
+export const fetchAreaNoOne = async (areaNoId) =>{
+    try{
+        const oneAreaNo = await axios.get(`/api/nonEducationalAreas/${areaNoId}`,{
+            headers:{
+                Authorization: myStorage.getItem('Authorization')
+            }
+        })
+        return oneAreaNo;
+    }catch (e) {
+        console.log(e)
+    }
+}
+
+export const fetchAreaNoEdit = async (areaNoId,AreaNo) =>{
+    try{
+        const editAreaNo = await axios.put(`/api/nonEducationalAreas/${areaNoId}`,AreaNo,{
+            headers:{
+                Authorization: myStorage.getItem('Authorization')
+            }
+        })
+        return editAreaNo;
+    }catch (e) {
+        console.log(e)
+    }
+}
+
+
 export const fetchFaculties = async () =>{
     try{
         const getFaculties = await axios.get(`/api/faculties`,{
@@ -288,5 +354,28 @@ export const fetchFacultyNew = async (faculty) =>{
 }
 
 
+export const fetchFacultyOne = async (idFaculty) =>{
+    try{
+        const oneFaculty = await axios.get(`/api/faculties/${idFaculty}`,{
+            headers:{
+                Authorization: myStorage.getItem('Authorization')
+            }
+        })
+        return oneFaculty;
+    }catch (e) {
+        console.log(e)
+    }
+}
 
-
+export const fetchFacultyEdit = async (idFaculty,faculty) =>{
+    try{
+        const newEntity = await axios.put(`/api/faculties/${idFaculty}`,faculty,{
+            headers:{
+                Authorization: myStorage.getItem('Authorization')
+            }
+        })
+        return newEntity;
+    }catch (e) {
+        console.log(e)
+    }
+}
