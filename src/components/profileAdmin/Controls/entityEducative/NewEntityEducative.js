@@ -137,7 +137,7 @@ export const NewEntityEducative = () => {
 									</dd>
 								</div>
 								
-								<div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+								<div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
 									<dt className="text-sm font-medium text-gray-500">Pais</dt>
 									<dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
 										<select
@@ -155,7 +155,7 @@ export const NewEntityEducative = () => {
 										</select>
 									</dd>
 								</div>
-								<div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+								<div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
 									<dt className="text-sm font-medium text-gray-500">Departamento</dt>
 									<dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
 										
@@ -173,7 +173,7 @@ export const NewEntityEducative = () => {
 											</select>
 									</dd>
 								</div>
-								<div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+								<div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
 									<dt className="text-sm font-medium text-gray-500">Ciudad</dt>
 									<dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
 										<select
@@ -187,7 +187,7 @@ export const NewEntityEducative = () => {
 										</select>
 									</dd>
 								</div>
-								<div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+								<div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
 									<dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
 										<button type='submit'
 											className="mr-3 inline-flex items-center px-3 py-2 border border-indigo-600 rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
